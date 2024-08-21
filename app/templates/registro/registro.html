@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>CheckTIC</title>
+
+    <!-- Custom fonts for this template -->
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'dist/css/sb-admin-2.min.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  </head>
+
+  <style>
+    
+  </style>
+
+  <body class="bg-gradient-primary">
+    <div class="container">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+            <p class="corner-textNomb text-danger" style="display: none;">El campo Nombre es obligatorio</p>
+            <p class="corner-textApell text-danger" style="display: none;">El campo Apellido es obligatorio</p>
+            <p class="corner-textEmail text-danger " style="display: none;">El campo Email es obligatorio</p>
+            <p class="corner-textNombuser text-danger" style="display: none;">El campo Nombre de usuario es obligatorio</p>
+            <p class="corner-textAt text-danger" style="display: none;">El campo Area de Trabajo es obligatorio</p>
+            <p class="corner-textDep text-danger" style="display: none;">El campo Departamento es obligatorio</p>
+            <p class="corner-textContra text-danger" style="display: none;">Las contraseñas no coinciden</p>
+            <p class="corner-textContraVacia text-danger" style="display: none;">La Contraseña no puede estar vacia</p>
+            <p class="corner-textRepContra text-danger" style="display: none;">Debes repetir la contraseña</p>
+            <p class="corner-textContraInvalida text-danger" style="display: none;">La contraseña debe tener mas de 8 caracteres, mayúsculas, caracteres especiales y números</p>
+            <p class="corner-textEmailInvalido text-danger" style="display: none;">El correo introducido es invalido</p>
+
+            
+            <div class="col-lg-7">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                </div>
+                <form class="user" method="post" class="login100-form validate-form" action="{% url 'registro' %}">
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <input type="text" name="primer_nombre" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" />
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" name="segundo_nombre" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" />
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="username" name="username" class="form-control form-control-user" id="exampleInputUsername" placeholder="Username" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-6">
+                      <div class="input-group">
+                        <input type="password" name="password" class="form-control form-control-user" id="InputPassword" placeholder="Contraseña" /> <div class="input-group-append">
+                          <span class="input-group-text" onclick="togglePasswordVisibility()"><i class="bi bi-eye" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+
+                      {% comment %} <input type="password" name="password" class="form-control form-control-user" id="InputPassword" placeholder="Contraseña" /> {% endcomment %}
+                    </div>
+
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <div class="input-group">
+                        <input type="password" name="repeat_password" class="form-control form-control-user" id="InputRepeatPassword" placeholder="Repetir Contraseña" /> <div class="input-group-append">
+                          <span class="input-group-text" onclick="togglePasswordVisibility()"><i class="bi bi-eye" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <script></script>
+
+                  <div class="form-group row">
+                    <div class="col-sm-6">
+                      <select id="area_trabajo" name="area_trabajo" aria-controls="dataarea" class="custom-select custom-select-sm form-control form-control-sm">
+                        <option value="" disabled selected hidden>Selecciona un área de trabajo</option>
+                        {% for area_trabajo in areas_trabajo %}
+                          <option value="{{ area_trabajo.id }}">{{ area_trabajo.nombre }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <select id="departamento" name="departamento" aria-controls="dataarea" class="custom-select custom-select-sm form-control form-control-sm">
+                        <option value="" disabled selected hidden>Selecciona un Departamento</option>
+                        {% for departamento in departamentos %}
+                          <option value="{{ departamento.id }}">{{ departamento.nombre }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">Registrar</button>
+                  </div>
+                </form>
+                <hr />
+                {% comment %} <div class="text-center">
+                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                </div> {% endcomment %}
+
+                <div class="text-center">
+                  <a class="small" href="{% url 'login' %}">Already have an account? Login!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    {% comment %} <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages -->
+    <script src="js/sb-admin-2.min.js"></script> {% endcomment %}
+    <script src="{% static 'dist/js/functions.js' %}"></script>
+  </body>
+</html>

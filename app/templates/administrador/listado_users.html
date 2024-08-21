@@ -1,0 +1,161 @@
+{% extends 'administrador/base2.html' %}
+{% load static %}
+{% block contenido %}
+  <!-- Custom styles for this page -->
+
+  <!-- Begin Page Content -->
+  <div class="container container-fluid pt-3">
+    <!-- DataTables de Trabajadores -->
+    <div class="div-trabajadores" id="div-trabajadores">
+      <div class="card shadow mb-4">
+        
+        <div style="width: 100%; align-items: center;" class="card-header py-3 d-flex">
+          <div>
+            <h6 class="m-0 font-weight-bold text-primary">Listado de los Trabajadores</h6>
+          </div>
+          {% comment %} <div style="width: 100%;"></div> {% endcomment %}
+        </div> 
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered scroll-container py-2" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Correo</th>
+                  <th>Departamento</th>
+                  <th>Información</th>
+                  <th>Comunicación Y Colaboración Digital</th>
+                  <th>Equipamiento</th>
+                  <th>Software o Programas</th>
+                  <th>Seguridad</th>
+                  <th>Solucion de problemas</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in users %}
+                  <tr class="elemento-a-filtrar" data-departamento="{{ user.profile.departamento.nombre }}">
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    {% for profile in profiles %}
+                      {% if profile.user.id == user.id %}
+                        <td>
+                          {% for departamento in departamentos %}
+                            {% if departamento.id == profile.departamento.id %}
+                              {{ departamento.nombre }}
+                            {% endif %}
+                          {% endfor %}
+                        </td>
+                      {% endif %}
+                    {% endfor %}
+                    {% for resultado in resultadosuser %}
+                      {% if resultado.user.id == user.id %}
+                        <td>{{ resultado.resultado1 }}</td>
+                        <td>{{ resultado.resultado2 }}</td>
+                        <td>{{ resultado.resultado3 }}</td>
+                        <td>{{ resultado.resultado4 }}</td>
+                        <td>{{ resultado.resultado5 }}</td>
+                        <td>{{ resultado.resultado6 }}</td>
+                      {% endif %}
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Correo</th>
+                  <th>Departamento</th>
+                  <th>Información</th>
+                  <th>Comunicación y Colaboración Digital</th>
+                  <th>Equipamiento</th>
+                  <th>Software o Programas</th>
+                  <th>Seguridad</th>
+                  <th>Solucion de problemas</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+
+  <!-- Scroll to Top Button -->
+  <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+  <!-- Modal para agregar departamento--- -->
+  <div style="height: auto;" class="modal fade" id="modalDepartamento" aria-hidden="true" aria-labelledby="modalDepartamentoLabel" tabindex="-1">
+    <div style="justify-content: center;" class="modal-dialog modal-dialog-centered">
+      <div style="width: 40%;" class="modal-content">
+        <div style="height: 4rem;" class="modal-header">
+          <h5 class="modal-title" id="modalDepartamentoLabel">Agregar Departamento</h5>
+
+          <div id="Agregado_correctD" class="mb-0 mt-1" style="white-space: nowrap;display: none; border-radius: 1rem; background-color:lightgreen; margin-left:auto;align-items: baseline;">
+            <i style="display: inline-block;" class="m-2 fa fa-check-circle-o"></i>
+            <p style="display: inline-block;" class="m-2">Agregado correctamente</p>
+          </div>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <form id="formDepartamento" method="POST" action="{% url 'agregar_departamento' %}">
+          <div class="mt-2 modal-body">
+            <div style="align-items: self-end;" class="mt-1 d-flex form-group">
+              <label class="m-0 fs-5" style="width: 70%;" for="nombre">Nombre del Departamento:</label>
+              <input style="width: 60%;" type="text" class="form-control" id="nombre" name="nombre" required />
+            </div>
+          </div>
+          <div class="modal-footer" style="text-align-last: center;">
+            <button type="submit" class="btn btn-primary mr-3" name="guardarDepartamentoBtn">Agregar</button>
+            <button type="button" class="btn btn-primary ml-3" data-dismiss="modal" aria-label="Cerrar">Cerrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para agregar Area de Trabajo--- -->
+  <div style="height: auto;" class="modal fade" id="modalArea_trabajo" aria-hidden="true" aria-labelledby="modalArea_trabajoLabel" tabindex="-1">
+    <div style="justify-content: center;" class="modal-dialog modal-dialog-centered">
+      <div style="width: 45%;" class="modal-content">
+        <div style="height: 4rem;" class="modal-header">
+          <h5 class="modal-title" id="modalArea_trabajo">Agregar Area de Trabajo</h5>
+
+          <div id="Agregado_correctA_t" class="mb-0 mt-1" style="white-space: nowrap;display: none; border-radius: 1rem; background-color:lightgreen; margin-left:auto;align-items: baseline;">
+            <i style="display: inline-block;" class="m-2 fa fa-check-circle-o"></i>
+            <p style="display: inline-block;" class="m-2">Agregado correctamente</p>
+          </div>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <form id="formArea_trabajo" method="POST" action="{% url 'agregar_area_trabajo' %}">
+          <div class="modal-body">
+            <div style="align-items: self-end;" class="d-flex form-group">
+              <label class="m-0 fs-5" style="width: 70%;" for="nombre">Nombre del Area de Trabajo:</label>
+              <input style="width: 60%;" type="text" class="form-control" id="nombre" name="nombre" required />
+            </div>
+          </div>
+          <div style="text-align-last: center;" class="modal-footer">
+            <button type="submit" class="btn btn-primary mr-3" name="guardarArea_trabajoBtn">Agregar</button>
+            <button type="button" class="btn btn-primary ml-3" data-dismiss="modal" aria-label="Cerrar">Cerrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    th {
+      align-items: center;
+      text-align-last: center;
+    }
+  </style>
+
+
+  <script src="{% static 'dist/js/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'dist/js/dataTables.bootstrap4.min.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,978 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <meta name="description" content="Sitio web para la evaluacion de las competencias informacionales" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- -Mis css-- -->
+  -->
+  {% comment %} <link rel="stylesheet" href="{% static 'dist/css/sb-admin-2.min.css' %}" /> {% endcomment %}
+
+  <link rel="stylesheet" href="{% static 'dist/css/styles.css' %}" />
+  <link rel="stylesheet" href="{% static 'dist/css/mio.css' %}" />
+  {% comment %} <link rel="stylesheet" href="{% static 'dist/css/2.css' %}" /> {% endcomment %}
+  {% comment %} <link rel="stylesheet" href="{% static 'dist/css/3.css' %}" /> {% endcomment %}
+
+  {% comment %} <link rel="stylesheet" href="{% static 'dist/css/dataTables.bootstrap4.css' %}" /> {% endcomment %}
+
+  <link rel="stylesheet" href="{% static 'dist/css/bootstrap.min.css' %}" />
+
+  <!-- - CDN-- -->
+  -->
+  {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" /> {% endcomment %}
+  {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> {% endcomment %}
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <head>
+    <title>CheckTIC</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>CheckTIC</title>
+  </head>
+
+  <body class="nav-fixed">
+    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
+      <!-- Sidenav Toggle Button -->
+      <button class="btn btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle">
+        <svg style="vertical-align: baseline;width: 1.6rem;height:1.6rem;" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Navbar Brand -->
+      <!-- * * Tip * * You can use text or an image for your navbar brand. -->
+      <!-- * * * * * * When using an image, we recommend the SVG format. -->
+      <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px -->
+      <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="https://sb-admin-pro.startbootstrap.com/index.html">CheckTIC</a>
+
+      <div class="m-2">
+        <img alt="Logotipo del CIGET" src="{% static 'dist/img/Logo_CIGET.webp' %}" width="200" height="60" />
+      </div>
+
+      <!-- Navbar Items -->
+      <ul class="navbar-nav align-items-center ms-auto">
+        <!-- User Dropdown -->
+        <li class="nav-item dropdown no-arrow dropdown-user me-3 me-lg-4">
+          <a class="nav-link dropdown-toggle btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img alt="foto del usuario" class="img-profile rounded-circle" src="{% static 'dist/img/user.webp' %}" width="35px" height="35px" /></a>
+          <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+            <h6 class="dropdown-header d-flex align-items-center">
+              <img alt="foto del usuario" class="img-profile rounded-circle dropdown-user-image" src="{% static 'dist/img/user.webp' %}" width="35px" height="35px" />
+              <div class="dropdown-user-details">
+                <div class="dropdown-user-details-name">{{ user.first_name }}&nbsp{{ user.last_name }}</div>
+                <div class="dropdown-user-details-email">{{ user.email }}</div>
+              </div>
+            </h6>
+            <hr class="sidebar-divider d-none d-md-block" />
+            <div class="dropdown-menu-right animated--grow-in">
+              <a class="dropdown-item" href="{% url 'perfil' %}">
+                <div class="dropdown-item-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  </svg>
+                </div>Account
+              </a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <div class="dropdown-item-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
+                </div>Logout
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sidenav shadow-right sidenav-light">
+          <div class="sidenav-menu">
+            <div class="nav accordion" id="accordionSidenav">
+              <!-- Sidenav Menu Heading (Account) -->
+              <!-- * * Note: * * Visible only on and above the sm breakpoint -->
+              <div class="sidenav-menu-heading d-sm-none">Account</div>
+              <!-- Sidenav Link (Alerts) -->
+              <!-- * * Note: * * Visible only on and above the sm breakpoint -->
+              <a class="nav-link d-sm-none" href="https://sb-admin-pro.startbootstrap.com/#!">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                </div>Alerts
+                <span class="badge bg-warning-soft text-warning ms-auto">4 New!</span>
+              </a>
+              <!-- Sidenav Link (Messages) -->
+              <!-- * * Note: * * Visible only on and above the sm breakpoint -->
+              <a class="nav-link d-sm-none" href="https://sb-admin-pro.startbootstrap.com/#!">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>Messages
+                <span class="badge bg-success-soft text-success ms-auto">2 New!</span>
+              </a>
+              <!-- Sidenav Menu Heading (Core) -->
+              <div class="sidenav-menu-heading">Core</div>
+              <!-- Sidenav Accordion (Dashboard) -->
+              <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>Dashboards<div class="sidenav-collapse-arrow">
+                  <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                    <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                </div>
+              </a>
+              <div class="collapse" id="collapseDashboards" data-bs-parent="#accordionSidenav">
+                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/dashboard-1.html">
+                    Default
+                    <span class="badge bg-primary-soft text-primary ms-auto">Updated</span>
+                  </a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/dashboard-2.html">Multipurpose</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/dashboard-3.html">Affiliate</a>
+                </nav>
+              </div>
+              <!-- Sidenav Heading (Custom) -->
+              <div class="sidenav-menu-heading">Custom</div>
+              <!-- Sidenav Accordion (Pages) -->
+              <a class="nav-link " >
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                  </svg>
+                </div>Pages
+                  <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                    <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                </div>
+              </a>
+              <div>
+                <nav class="sidenav-menu-nested nav " >
+                  <!-- Nested Sidenav Accordion (Pages -> Account) -->
+                  <a class="nav-link">
+                    Account<div >
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div>
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/account-profile.html">Profile</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/account-billing.html">Billing</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/account-security.html">Security</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/account-notifications.html">Notifications</a>
+                    </nav>
+                  </div>
+                  <!-- Nested Sidenav Accordion (Pages -> Authentication) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                    Authentication<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="pagesCollapseAuth" data-bs-parent="#accordionSidenavPagesMenu">
+                    <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesAuth">
+                      <!-- Nested Sidenav Accordion (Pages -> Authentication -> Basic) -->
+                      <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthBasic" aria-expanded="false" aria-controls="pagesCollapseAuthBasic">
+                        Basic<div class="sidenav-collapse-arrow">
+                          <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                            <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                          </svg>
+                          <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                        </div>
+                      </a>
+                      <div class="collapse" id="pagesCollapseAuthBasic" data-bs-parent="#accordionSidenavPagesAuth">
+                        <nav class="sidenav-menu-nested nav">
+                          <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/auth-login-basic.html">Login</a>
+                          <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/auth-register-basic.html">Register</a>
+                          <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/auth-password-basic.html">Forgot Password</a>
+                        </nav>
+                      </div>
+                      <!-- Nested Sidenav Accordion (Pages -> Authentication -> Social) -->
+                      <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthSocial" aria-expanded="false" aria-controls="pagesCollapseAuthSocial">
+                        Social<div class="sidenav-collapse-arrow">
+                          <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                            <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                          </svg>
+                          <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                        </div>
+                      </a>
+                      <div class="collapse" id="pagesCollapseAuthSocial" data-bs-parent="#accordionSidenavPagesAuth">
+                        <nav class="sidenav-menu-nested nav">
+                          <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/auth-login-social.html">Login</a>
+                          <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/auth-register-social.html">Register</a>
+                          <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/auth-password-social.html">Forgot Password</a>
+                        </nav>
+                      </div>
+                    </nav>
+                  </div>
+                  <!-- Nested Sidenav Accordion (Pages -> Error) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                    Error<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="pagesCollapseError" data-bs-parent="#accordionSidenavPagesMenu">
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/error-400.html">400 Error</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/error-401.html">401 Error</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/error-403.html">403 Error</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/error-404-1.html">404 Error 1</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/error-404-2.html">404 Error 2</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/error-500.html">500 Error</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/error-503.html">503 Error</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/error-504.html">504 Error</a>
+                    </nav>
+                  </div>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/pricing.html">Pricing</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/invoice.html">Invoice</a>
+                </nav>
+              </div>
+              <!-- Sidenav Accordion (Applications) -->
+              <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseApps" aria-expanded="false" aria-controls="collapseApps">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                </div>Applications<div class="sidenav-collapse-arrow">
+                  <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                    <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                </div>
+              </a>
+              <div class="collapse" id="collapseApps" data-bs-parent="#accordionSidenav">
+                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
+                  <!-- Nested Sidenav Accordion (Apps -> Knowledge Base) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#appsCollapseKnowledgeBase" aria-expanded="false" aria-controls="appsCollapseKnowledgeBase">
+                    Knowledge Base<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="appsCollapseKnowledgeBase" data-bs-parent="#accordionSidenavAppsMenu">
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/knowledge-base-home-1.html">Home 1</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/knowledge-base-home-2.html">Home 2</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/knowledge-base-category.html">Category</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/knowledge-base-article.html">Article</a>
+                    </nav>
+                  </div>
+                  <!-- Nested Sidenav Accordion (Apps -> User Management) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#appsCollapseUserManagement" aria-expanded="false" aria-controls="appsCollapseUserManagement">
+                    User Management<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="appsCollapseUserManagement" data-bs-parent="#accordionSidenavAppsMenu">
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/user-management-list.html">Users List</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/user-management-edit-user.html">Edit User</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/user-management-add-user.html">Add User</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/user-management-groups-list.html">Groups List</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/user-management-org-details.html">Organization Details</a>
+                    </nav>
+                  </div>
+                  <!-- Nested Sidenav Accordion (Apps -> Posts Management) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#appsCollapsePostsManagement" aria-expanded="false" aria-controls="appsCollapsePostsManagement">
+                    Posts Management<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="appsCollapsePostsManagement" data-bs-parent="#accordionSidenavAppsMenu">
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/blog-management-posts-list.html">Posts List</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/blog-management-create-post.html">Create Post</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/blog-management-edit-post.html">Edit Post</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/blog-management-posts-admin.html">Posts Admin</a>
+                    </nav>
+                  </div>
+                </nav>
+              </div>
+              <!-- Sidenav Accordion (Flows) -->
+              <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseFlows" aria-expanded="false" aria-controls="collapseFlows">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-repeat">
+                    <polyline points="17 1 21 5 17 9"></polyline>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                    <polyline points="7 23 3 19 7 15"></polyline>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                  </svg>
+                </div>Flows<div class="sidenav-collapse-arrow">
+                  <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                    <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                </div>
+              </a>
+              <div class="collapse" id="collapseFlows" data-bs-parent="#accordionSidenav">
+                <nav class="sidenav-menu-nested nav">
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/multi-tenant-select.html">Multi-Tenant Registration</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/wizard.html">Wizard</a>
+                </nav>
+              </div>
+              <!-- Sidenav Heading (UI Toolkit) -->
+              <div class="sidenav-menu-heading">UI Toolkit</div>
+              <!-- Sidenav Accordion (Layout) -->
+              <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                  </svg>
+                </div>Layout<div class="sidenav-collapse-arrow">
+                  <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                    <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                </div>
+              </a>
+              <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
+                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
+                  <!-- Nested Sidenav Accordion (Layout -> Navigation) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutSidenavVariations" aria-expanded="false" aria-controls="collapseLayoutSidenavVariations">
+                    Navigation<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="collapseLayoutSidenavVariations" data-bs-parent="#accordionSidenavLayout">
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/layout-static.html">Static Sidenav</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/layout-dark.html">Dark Sidenav</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/layout-rtl.html">RTL Layout</a>
+                    </nav>
+                  </div>
+                  <!-- Nested Sidenav Accordion (Layout -> Container Options) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutContainers" aria-expanded="false" aria-controls="collapseLayoutContainers">
+                    Container Options<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="collapseLayoutContainers" data-bs-parent="#accordionSidenavLayout">
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/layout-boxed.html">Boxed Layout</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/layout-fluid.html">Fluid Layout</a>
+                    </nav>
+                  </div>
+                  <!-- Nested Sidenav Accordion (Layout -> Page Headers) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsPageHeaders" aria-expanded="false" aria-controls="collapseLayoutsPageHeaders">
+                    Page Headers<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="collapseLayoutsPageHeaders" data-bs-parent="#accordionSidenavLayout">
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/header-simplified.html">Simplified</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/header-compact.html">Compact</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/header-overlap.html">Content Overlap</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/header-breadcrumbs.html">Breadcrumbs</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/header-light.html">Light</a>
+                    </nav>
+                  </div>
+                  <!-- Nested Sidenav Accordion (Layout -> Starter Layouts) -->
+                  <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsStarterTemplates" aria-expanded="false" aria-controls="collapseLayoutsStarterTemplates">
+                    Starter Layouts<div class="sidenav-collapse-arrow">
+                      <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                      </svg>
+                      <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                    </div>
+                  </a>
+                  <div class="collapse" id="collapseLayoutsStarterTemplates" data-bs-parent="#accordionSidenavLayout">
+                    <nav class="sidenav-menu-nested nav">
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/starter-default.html">Default</a>
+                      <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/starter-minimal.html">Minimal</a>
+                    </nav>
+                  </div>
+                </nav>
+              </div>
+              <!-- Sidenav Accordion (Components) -->
+              <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseComponents" aria-expanded="false" aria-controls="collapseComponents">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package">
+                    <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                </div>Components<div class="sidenav-collapse-arrow">
+                  <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                    <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                </div>
+              </a>
+              <div class="collapse" id="collapseComponents" data-bs-parent="#accordionSidenav">
+                <nav class="sidenav-menu-nested nav">
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/alerts.html">Alerts</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/avatars.html">Avatars</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/badges.html">Badges</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/buttons.html">Buttons</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/cards.html">
+                    Cards
+                    <span class="badge bg-primary-soft text-primary ms-auto">Updated</span>
+                  </a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/dropdowns.html">Dropdowns</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/forms.html">
+                    Forms
+                    <span class="badge bg-primary-soft text-primary ms-auto">Updated</span>
+                  </a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/modals.html">Modals</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/navigation.html">Navigation</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/progress.html">Progress</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/step.html">Step</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/timeline.html">Timeline</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/toasts.html">Toasts</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/tooltips.html">Tooltips</a>
+                </nav>
+              </div>
+              <!-- Sidenav Accordion (Utilities) -->
+              <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tool">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                  </svg>
+                </div>Utilities<div class="sidenav-collapse-arrow">
+                  <svg class="svg-inline--fa fa-angle-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                    <path fill="currentColor" d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <!-- <i class="fas fa-angle-down"></i> Font Awesome fontawesome.com -->
+                </div>
+              </a>
+              <div class="collapse" id="collapseUtilities" data-bs-parent="#accordionSidenav">
+                <nav class="sidenav-menu-nested nav">
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/animations.html">Animations</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/background.html">Background</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/borders.html">Borders</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/lift.html">Lift</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/shadows.html">Shadows</a>
+                  <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/typography.html">Typography</a>
+                </nav>
+              </div>
+              <!-- Sidenav Heading (Addons) -->
+              <div class="sidenav-menu-heading">Plugins</div>
+              <!-- Sidenav Link (Charts) -->
+              <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/charts.html">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart">
+                    <line x1="12" y1="20" x2="12" y2="10"></line>
+                    <line x1="18" y1="20" x2="18" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="16"></line>
+                  </svg>
+                </div>Charts
+              </a>
+              <!-- Sidenav Link (Tables) -->
+              <a class="nav-link" href="https://sb-admin-pro.startbootstrap.com/tables.html">
+                <div class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                  </svg>
+                </div>Tables
+              </a>
+            </div>
+          </div>
+          <!-- Sidenav Footer -->
+          <div class="sidenav-footer">
+            <div class="sidenav-footer-content">
+              <div class="sidenav-footer-subtitle">Logged in as:</div>
+              <div class="sidenav-footer-title">Valerie Luna</div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <header class="py-10 mb-4 bg-gradient-primary-to-secondary">
+            <div class="container-xl px-4">
+              <div class="text-center">
+                <h1 class="text-white">Welcome to SB Admin Pro</h1>
+                <p class="lead mb-0 text-white-50">A professionally designed admin panel template built with Bootstrap 5</p>
+              </div>
+            </div>
+          </header>
+          <!-- Main page content -->
+          <div class="container-xl px-4">
+            <h2 class="mt-5 mb-0">Dashboards</h2>
+            <p>Three dashboard examples to get you started!</p>
+            <hr class="mt-0 mb-4" />
+            <div class="row">
+              <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/dashboard-1.html"><img class="img-fluid" src="./default.png" alt="..." /></a>
+                <div class="text-center small">Default Dashboard</div>
+              </div>
+              <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/dashboard-3.html"><img class="img-fluid" src="./affiliate.png" alt="..." /></a>
+                <div class="text-center small">Affiliate Dashboard</div>
+              </div>
+              <div class="col-md-6 col-xl-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/dashboard-2.html"><img class="img-fluid" src="./multipurpose.png" alt="..." /></a>
+                <div class="text-center small">Multipurpose Dashboard</div>
+              </div>
+            </div>
+            <h2 class="mt-5 mb-0">App Pages</h2>
+            <p>App pages to cover common use pages to help build your app!</p>
+            <hr class="mt-0 mb-4" />
+            <div class="row">
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/account-billing.html"><img class="img-fluid" src="./account-billing.png" alt="..." /></a>
+                <div class="text-center small">Account - Billing</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/account-notifications.html"><img class="img-fluid" src="./account-notifications.png" alt="..." /></a>
+                <div class="text-center small">Account - Notifications</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/account-profile.html"><img class="img-fluid" src="./account-profile.png" alt="..." /></a>
+                <div class="text-center small">Account - Profile</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/account-security.html"><img class="img-fluid" src="./account-security.png" alt="..." /></a>
+                <div class="text-center small">Account - Security</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/auth-login-basic.html"><img class="img-fluid" src="./auth-login-basic.png" alt="..." /></a>
+                <div class="text-center small">Auth - Login</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/auth-login-social.html"><img class="img-fluid" src="./auth-login-social.png" alt="..." /></a>
+                <div class="text-center small">Auth - Login (Social)</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/multi-tenant-select.html"><img class="img-fluid" src="./auth-mutli-tenant.png" alt="..." /></a>
+                <div class="text-center small">Auth - Multi Tenant</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/auth-password-basic.html"><img class="img-fluid" src="./auth-password-basic.png" alt="..." /></a>
+                <div class="text-center small">Auth - Password</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/auth-password-social.html"><img class="img-fluid" src="./auth-password-social.png" alt="..." /></a>
+                <div class="text-center small">Auth - Password (Social)</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/auth-register-basic.html"><img class="img-fluid" src="./auth-register-basic.png" alt="..." /></a>
+                <div class="text-center small">Auth - Register</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/auth-register-social.html"><img class="img-fluid" src="./auth-register-social.png" alt="..." /></a>
+                <div class="text-center small">Auth - Register (Social)</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/invoice.html"><img class="img-fluid" src="./invoice.png" alt="..." /></a>
+                <div class="text-center small">Invoice</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/knowledge-base-article.html"><img class="img-fluid" src="./knowledgebase-article.png" alt="..." /></a>
+                <div class="text-center small">Knowledgebase - Article</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/knowledge-base-category.html"><img class="img-fluid" src="./knowledgebase-category.png" alt="..." /></a>
+                <div class="text-center small">Knowledgebase - Category</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/knowledge-base-home-1.html"><img class="img-fluid" src="./knowledgebase-home-1.png" alt="..." /></a>
+                <div class="text-center small">Knowledgebase - Home 1</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/knowledge-base-home-2.html"><img class="img-fluid" src="./knowledgebase-home-2.png" alt="..." /></a>
+                <div class="text-center small">Knowledgebase - Home 2</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/pricing.html"><img class="img-fluid" src="./pricing.png" alt="..." /></a>
+                <div class="text-center small">Pricing</div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
+                <a class="d-block lift rounded overflow-hidden mb-2" href="https://sb-admin-pro.startbootstrap.com/wizard.html"><img class="img-fluid" src="./wizard.png" alt="..." /></a>
+                <div class="text-center small">Wizard</div>
+              </div>
+            </div>
+            <h2 class="mt-5 mb-0">Starter Layouts</h2>
+            <p>Layouts for creating new pages within your project!</p>
+            <hr class="mt-0 mb-4" />
+            <div class="row">
+              <div class="col-sm-6 col-md-4 mb-4">
+                <div class="small mb-1">Navigation</div>
+                <div class="list-group mb-4">
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/layout-static.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Static Sidenav<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/layout-dark.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Dark Sidenav<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/layout-rtl.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      RTL Layout<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+                <div class="small mb-1">Container Options</div>
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/layout-boxed.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Boxed Layouts<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/layout-fluid.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Fluid Layout<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-4">
+                <div class="small mb-1">Page Headers</div>
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/header-simplified.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Simplified<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/header-compact.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Compact<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/header-overlap.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Content Overlap<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/header-breadcrumbs.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Breadcrumbs<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/header-light.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Light<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-4">
+                <div class="small mb-1">Starter Layouts</div>
+                <div class="list-group mb-4">
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/starter-default.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Default<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                  <a class="list-group-item list-group-item-action p-3" href="https://sb-admin-pro.startbootstrap.com/starter-minimal.html">
+                    <div class="d-flex align-items-center justify-content-between">
+                      Minimal<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right text-muted">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer class="footer-admin mt-auto footer-light">
+          <div class="container-xl px-4">
+            <div class="row">
+              <div class="col-md-6 small">Copyright © Your Website 2021</div>
+              <div class="col-md-6 text-md-end small">
+                <a href="https://sb-admin-pro.startbootstrap.com/#!">Privacy Policy</a>
+                ·
+                <a href="https://sb-admin-pro.startbootstrap.com/#!">Terms &amp; Conditions</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+
+  {% comment %} <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'inicio' %}"><div style="display: flex;font-size: small;" class="sidebar-brand-text mx-3">CheckTIC</div></a>
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'inicio' %}">
+            <i class="bi bi-speedometer2"></i>
+            <span>Inicio</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'estadistica' %}">
+            <i class="bi bi-graph-up"></i>
+            <span>Estadisticas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'user_list' %}">
+            <i class="bi bi-table"></i>
+            <span>Listados</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'evaluacion' %}">
+            <i class="bi bi-bar-chart-line"></i>
+            <span>Evaluación</span>
+          </a>
+        </li>
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contacto' %}">
+            <i class="bi bi-person-lines-fill"></i>
+            <span>Contacto</span>
+          </a>
+        </li>
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'material_list' %}">
+            <i class="bi bi-book"></i>
+            <span>Materiales</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block" />
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3"><i class="fa fa-bars"></i></button>
+
+            <div class="m-4" style="width: 100%;">
+              <img alt="Logotipo del CIGET" src="{% static 'dist/img/Logo_CIGET.webp' %}" width="20%" height="10%" />
+            </div>
+
+            <!-- Navbar Items -->
+            <ul class="navbar-nav align-items-center ms-auto">
+              <!-- User Dropdown -->
+              <li class="nav-item dropdown no-arrow dropdown-user me-3 me-lg-4">
+                <a class="nav-link dropdown-toggle btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img alt="foto del usuario" class="img-profile rounded-circle" src="{% static 'dist/img/user.webp' %}" width="35px" height="35px" /></a>
+                <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                  <h6 class="dropdown-header d-flex align-items-center">
+                    <img alt="foto del usuario" class="img-profile rounded-circle dropdown-user-image" src="{% static 'dist/img/user.webp' %}" width="35px" height="35px" />
+                    <div class="dropdown-user-details">
+                      <div class="dropdown-user-details-name">{{ user.first_name }}&nbsp{{ user.last_name }}</div>
+                      <div class="dropdown-user-details-email">{{ user.email }}</div>
+                    </div>
+                  </h6>
+                  <hr class="sidebar-divider d-none d-md-block" />
+                  <div class="dropdown-menu-right animated--grow-in">
+                    <a class="dropdown-item" href="{% url 'perfil' %}">
+                      <div class="dropdown-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
+                          <circle cx="12" cy="12" r="3"></circle>
+                          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                      </div>Account
+                    </a>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                      <div class="dropdown-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+                          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                          <polyline points="16 17 21 12 16 7"></polyline>
+                          <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                      </div>Logout
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <!-- Nav Item - User Information -->
+            {% comment %} <ul>
+              <li style="list-style: none;display: flex;" class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small" name="usuario">{{ user.first_name }}&nbsp{{ user.last_name }}</span>
+                  <img alt="foto del usuario" class="img-profile rounded-circle" src="{% static 'dist/img/user.webp' %}" width="35px" height="35px" />
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="{% url 'perfil' %}"><i class="bi bi-person mr-2 text-gray-600"></i>Profile</a>
+                  {% comment %} <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="bi bi-box-arrow-left mr-2 text-gray-600"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          {% block contenido %}
+
+          {% endblock %}
+
+          <footer style=" margin-top: auto; position: relative;z-index: 100;" class="d-xl-flex align-items-xl-end">
+            <div class="container py-3 py-lg-4">
+              <hr />
+              <div class="text-muted d-flex justify-content-between align-items-center pt-3">
+                <p class="mb-0">
+                  Copyright © 2024 Check<b>TIC</b>
+                </p>
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook">
+                      <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                    </svg>
+                  </li>
+                  <li class="list-inline-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                      <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                    </svg>
+                  </li>
+                  <li class="list-inline-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram">
+                      <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                    </svg>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body> {% endcomment %}
+
+  <script src="{% static 'dist/js/sb-admin-2.min.js' %}"></script>
+
+  <script src="{% static 'dist/js/functions.js' %}"></script>
+  <script src="{% static 'admin/scripts.js' %}"></script>
+</html>

@@ -1,0 +1,197 @@
+{% extends 'administrador/base2.html' %}
+{% load static %}
+
+{% block contenido %}
+  <div id="wrapper">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <div class="container py-3">
+        <div class="py-2" style="text-align: -webkit-right;">
+          <button type="button" data-toggle="modal" data-target="#modalMaterial" class="button">
+            <span class="button__text">Agregar Material</span>
+            <span class="button__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                <line y2="19" y1="5" x2="12" x1="12"></line>
+                <line y2="12" y1="12" x2="19" x1="5"></line>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        {% for material in material %}
+          <article class="postcard light" style="height: 250px;">
+            {% if material.file %}
+              {% if material.get_file_type == 'image' %}
+                <a class="postcard__img_link" href="{{ material.file.url }}"><img class="postcard__img" src="{{ material.file.url }}" alt="{{ material.name }}" /></a>
+              {% elif material.get_file_type == 'pdf' %}
+                <a class="postcard__img_link" href="{{ material.file.url }}"><embed src="{{ material.file.url }}" type="application/pdf" width="100%" height="250px" /></a>
+              {% elif material.get_file_type == 'document' %}
+                <a class="postcard__img_link" href="{{ material.file.url }}"><iframe src="{{ material.file.url }}" width="100%" height="250px"></iframe></a>
+              {% elif material.get_file_type == 'compressed' %}
+                <a class="postcard__img_link" href="{{ material.file.url }}">
+                  <div style="display: flex; align-items: center; justify-content: center; height: 250px;">
+                    <i class="fa fa-file-archive-o fa-3x" aria-hidden="true"></i>
+                  </div>
+                </a>
+              {% else %}
+                <a class="postcard" href="{{ material.file.url }}">
+                  <div style="display: flex; align-items: center; justify-content: center; height: 250px;">
+                    <i class="fa fa-file-o fa-3x" aria-hidden="true"></i>
+                  </div>
+                </a>
+              {% endif %}
+            {% else %}
+              <div class="postcard" style="height: 250px;">
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <i class="fa fa-file-o fa-3x" aria-hidden="true"></i>
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="postcard__text t-dark">
+              <div class="d-flex" style="align-items: center;justify-content: space-between;">
+                <h3 class="postcard__title mb-0"><a>{{ material.name }}</a></h3>
+                <div class="postcard__subtitle small">
+                  <time class="mr-3" datetime="{{ material.created_at }}"><i class="fa fa-calendar mr-2" aria-hidden="true"></i>{{ material.created_at }}</time>
+                </div>
+
+                <div class="d-flex">
+                  <form method="post" action="{% url 'eliminar_material' material.id %}" class="m-auto">
+                    <button type="submit" class="btn-delete" aria-hidden="true">
+                      <svg viewBox="0 0 15 17.5" height="17" width="16" xmlns="http://www.w3.org/2000/svg" class="icon">
+                        <path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>
+                      </svg>
+                    </button>
+                  </form>
+
+                  <button class="btn-edit mt-1 ml-2" data-toggle="modal" data-target="#modalModificarMaterial{{ material.id }}" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square icon" viewBox="0 0 16 16">
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                    </svg>
+                    <path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>
+                  </button>
+
+                  {% comment %} <button class="edit-button mr-2" data-toggle="modal" data-target="#modalModificarMaterial{{ material.id }}"><i class="fa fa-pencil edit-svgIcon text-white" aria-hidden="true"></i></button>
+                  <form method="post" action="{% url 'eliminar_material' material.id %}">
+                    <button type="submit" class="delete-button"><i class="fa fa-trash delete-svgIcon text-white" aria-hidden="true"></i></button>
+                  </form>
+                  {% endcomment %}
+                </div>
+                {% comment %} <button class="Btn">
+                  <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                  </svg>
+                  <span class="icon2"></span>
+                  <span class="tooltip">Download</span>
+                </button> {% endcomment %}
+              </div>
+
+              <div class="postcard__bar"></div>
+              <div class="postcard__preview-txt">{{ material.description }}</div>
+              <ul class="postcard__tagbox pt-3">
+                <li class="tag__item play">
+                  <a href="{{ material.link }}">Visit&nbsp<i class="fa fa-arrow-right mr-2" aria-hidden="true"></i>{{ material.link }}</a>
+                </li>
+              </ul>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- End of Content Wrapper -->
+
+  <div class="modal fade" id="modalMaterial" aria-hidden="true" aria-labelledby="modalMaterialLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="m-4">
+          <div class="d-flex">
+            <p class="modal-title fs-5" id="modalMaterialLabel">Agregar Material</p>
+            <div id="Agregado_correct" class="mb-0 mt-1" style=" border-radius: 1rem; background-color:lightgreen; margin-left:auto;align-items: baseline; display: none;">
+              <i style="display: inline-block;" class="m-2 fa fa-check-circle-o"></i>
+              <p style="display: inline-block;" class="m-2">Agregado correctamente</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <form class="file-upload-form py-4 w-100" id="fileUploadForm" method="POST" enctype="multipart/form-data" action="{% url 'agregar_material' %}">
+              {% csrf_token %}
+              <label for="file" class="file-upload-label">
+                <div class="file-upload-design">
+                  <svg id="svg" viewBox="0 0 640 512" height="1em">
+                    <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path>
+                  </svg>
+                  <div id="file_select">Drag and Drop</div>
+                  <p id="file_name">or</p>
+                  <span class="browse-button">Browse file</span>
+                </div>
+                <input id="file" type="file" name="file" accept="*" onchange="loadfile(this)" />
+              </label>
+              <div class="card-body">
+                <input type="text" class="form-control" name="name" placeholder="Título del material" required />
+                <input type="text" class="form-control" name="link" placeholder="Enlace del material" required />
+                <div class="mb-3">
+                  <textarea class="form-control" name="description" rows="6" placeholder="Descripción acerca del material"></textarea>
+                </div>
+
+                <div class="container mt-5">
+                  <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success mr-3 col-sm-4" name="guardarMaterialBtn">Agregar</button>
+                    <button type="button" class="btn btn-danger ml-3 col-sm-4" data-dismiss="modal" aria-label="Cerrar">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height: auto;" class="modal fade" id="modalModificarMaterial{{ material.id }}" aria-hidden="true" aria-labelledby="modalMaterialLabel" tabindex="-1">
+    <div style="justify-content: center;" class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="width: 60%;">
+        <div class="m-4">
+          <div class="d-flex">
+            <p class="modal-title fs-5" id="modalMaterialLabel">Modificar Material</p>
+            {% if messages %}
+              <div id="Agregado_correct" class="mb-0 mt-1" style=" border-radius: 1rem; background-color:lightgreen; margin-left:auto;align-items: baseline;">
+                {% for message in messages %}
+                  <i style="display: inline-block;" class="m-2 fa fa-check-circle-o"></i>
+                  <p style="display: inline-block;" class="m-2">{{ message }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="card">
+            <form style="width: auto;" class="file-upload-form py-4" id="fileUploadForm" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <label for="file" class="file-upload-label">
+                <div class="file-upload-design">
+                  <svg id="svg" viewBox="0 0 640 512" height="1em">
+                    <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path>
+                  </svg>
+                  <div id="file_select">Drag and Drop</div>
+                  <p id="file_name">or</p>
+                  <span class="browse-button">Browse file</span>
+                </div>
+                <input id="file" type="file" name="file" accept="*" onchange="loadfile(this)" />
+              </label>
+              <div class="card-body" style="width: 65%;">
+                <input type="text" class="form-control" name="name" id="nuevoNombreMaterial{{ material.id }}" value="{{ material.name }}" required />
+                <input type="text" class="form-control" name="link" id="nuevoEnlaceMaterial{{ material.id }}" value="{{ material.link }}" required />
+                <div class="mb-3">
+                  <textarea class="form-control" name="description" rows="6" id="nuevodescripcionMaterial{{ material.id }}" placeholder="Descripción acerca del material">{{ material.description }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-success mr-3" name="guardarMaterialBtn">Guardar Cambios</button>
+                <a href="{% url 'material_list' %}" class="btn btn-danger ml-3">Cerrar</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

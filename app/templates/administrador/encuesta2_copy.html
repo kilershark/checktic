@@ -1,0 +1,1200 @@
+{% extends 'administrador/base2.html' %}
+{% load static %}
+
+{% block contenido %}
+  <style>
+    section {
+      width: 90%;
+      margin-top: 1.2rem;
+      justify-content: space-between;
+    }
+  </style>
+
+  <div class="container-fluid flex-grow-1" style=" margin-right:0;margin-left: 0; width: 100%;">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false" style="z-index: 100;">
+      <form id="formData">
+        <!-- Slides -->
+        <div class="carousel-inner">
+          <!-- First Slide -->
+          <div class="carousel-item active align-self-center me-md-0 ms-md-0 ps-md-1">
+            <div>
+              <h3>
+                Área de Competencia:
+                <strong>INFORMACIÓN</strong>
+              </h3>
+            </div>
+
+            <section>
+              <div>
+                <h5>1.1 Elaboración de estrategias de búsquedas.</h5>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.1.1 Conocimiento de Bases de Datos Académicas</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input style="font-size: larger;" class="form-check-input fs-5" type="radio" id="formCheck-3" required name="p1.1.1" value="1" /><label class="form-check-label" for="formCheck-3"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-4" required name="p1.1.1" value="0" /><label class="form-check-label" for="formCheck-4"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.1.2 Uso de palabras claves</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-5" required name="p1.1.2" value="1" /><label class="form-check-label" for="formCheck-5"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-6" required name="p1.1.2" value="0" /><label class="form-check-label" for="formCheck-6"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.1.3 Uso de Buscadores de internet</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-7" required name="p1.1.3" value="1" /><label class="form-check-label" for="formCheck-7"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-8" required name="p1.1.3" value="0" /><label class="form-check-label" for="formCheck-8"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>1.2 ¿Accedes, buscas y recuperas información en redes, bases de datos, buscadores, repositorios, etc.?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-9" required name="p1.2" value="1" /><label class="form-check-label" for="formCheck-9"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-10" required name="p1.2" value="0" /><label class="form-check-label" for="formCheck-10"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>1.3¿Accedes, buscas y recuperas información en redes, bases de datos, buscadores, repositorios, etc.?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-11" required name="p1.3" value="1" /><label class="form-check-label" for="formCheck-11"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-12" required name="p1.3" value="0" /><label class="form-check-label" for="formCheck-12"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div>
+                <h5>1.4.Almacenamiento y retroalimentación de la información</h5>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.4.1 ¿Utilizas algún sistema específico de almacenamiento de la información, como carpetas, software de gestión de datos, o servicios en la nube?</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-13" required name="p1.4.1" value="1" /><label class="form-check-label" for="formCheck-13"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-14" required name="p1.4.1" value="0" /><label class="form-check-label" for="formCheck-14"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.4.2 ¿Realizas alguna clasificación o categorización de la información almacenada para facilitar su posterior recuperación?</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-69" required name="p1.4.2" value="1" /><label class="form-check-label" for="formCheck-69"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-70" required name="p1.4.2" value="0" /><label class="form-check-label" for="formCheck-70"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.4.3 ¿Compartes la información almacenada con otros usuarios o colaboradores?</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-71" required name="p1.4.3" value="1" /><label class="form-check-label" for="formCheck-71"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-72" required name="p1.4.3" value="0" /><label class="form-check-label" for="formCheck-70"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>1.5 ¿Aplicas técnicas de citación de las fuentes recuperadas?</h5>
+              </div>
+
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-15" required name="p1.5" value="1" /><label class="form-check-label" for="formCheck-15"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-16" required name="p1.5" value="0" /><label class="form-check-label" for="formCheck-16"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>1.6 ¿Manejas traductores y diccionarios electrónicos?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-17" required name="p1.6" value="1" /><label class="form-check-label" for="formCheck-17"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-18" required name="p1.6" value="0" /><label class="form-check-label" for="formCheck-18"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div>
+                <h5>1.7 Indexación y asignación de metadatos</h5>
+                <div id="sub_task" class="d-flex">
+                  <div>
+                    <h5>1.7.1 ¿Utilizas herramientas o sistemas para indexar la información y asignar metadatos?</h5>
+                  </div>
+
+                  <div id="check">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input fs-5" type="radio" id="formCheck-19" required name="p1.7.1" value="1" /><label class="form-check-label" for="formCheck-19"><strong>Si</strong></label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input fs-5" type="radio" id="formCheck-20" required name="p1.7.1" value="0" /><label class="form-check-label" for="formCheck-20"><strong>No</strong></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.7.2 ¿Utilizas criterios al indexar la información para facilitar su recuperación?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-73" required name="p1.7.2" value="1" /><label class="form-check-label" for="formCheck-73"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-74" required name="p1.7.2" value="0" /><label class="form-check-label" for="formCheck-74"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.7.3 ¿Tienes experiencia en la creación de esquemas de metadatos para diferentes tipos de información?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-75" required name="p1.7.3" value="1" /><label class="form-check-label" for="formCheck-19"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-76" required name="p1.7.3" value="0" /><label class="form-check-label" for="formCheck-20"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.7.4 ¿Garantizas la consistencia y precisión al asignar metadatos a la información?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-77" required name="p1.7.4" value="1" /><label class="form-check-label" for="formCheck-77"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-78" required name="p1.7.4" value="0" /><label class="form-check-label" for="formCheck-78"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>1.7.5 ¿Consideras la interoperabilidad de los metadatos con otros sistemas o estándares al realizar la indexación y asignación?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-79" required name="p1.7.5" value="1" /><label class="form-check-label" for="formCheck-79"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-80" required name="p1.7.5" value="0" /><label class="form-check-label" for="formCheck-80"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>1.8 ¿Has participado en la elaboración e impartición de programas de alfabetización informacional?</h5>
+              </div>
+
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-21" required name="p1.8" value="1" /><label class="form-check-label" for="formCheck-21"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-22" required name="p1.8" value="0" /><label class="form-check-label" for="formCheck-22"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>1.9 ¿Sintetizas y organizas la información de manera coherente y comprensible?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-59" required name="p1.9" value="1" /><label class="form-check-label" for="formCheck-59"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-60" required name="p1.9" value="0" /><label class="form-check-label" for="formCheck-60"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Second Slides -->
+          <!-- AREA D COMPETENCIA 2 -->
+          <div class="carousel-item align-self-center me-md-0 ms-md-0 ps-md-1">
+            <div>
+              <h3>
+                Área de Competencia:
+                <strong>COMUNICACIÓN Y COLABORACIÓN DIGITAL</strong>
+              </h3>
+            </div>
+
+            <section>
+              <div>
+                <h5>2.1 Interacción a través de las redes sociales académicas.</h5>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.1.1 ¿Estás conectado a una red y tienes la capacidad de interactuar y obtener información de fuentes externas?</h5>
+                </div>
+                <div>
+                  <div id="check">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input fs-5" type="radio" id="formCheck-23" required name="p2.1.1" value="1" /><label class="form-check-label" for="formCheck-23"><strong>Si</strong></label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input fs-5" type="radio" id="formCheck-24" required name="p2.1.1" value="0" /><label class="form-check-label" for="formCheck-24"><strong>No</strong></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.1.2 ¿Utiliza las redes sociales académicas para buscar y compartir información relacionada con su área de estudio?</h5>
+                </div>
+                <div>
+                  <div id="check">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input fs-5" type="radio" id="formCheck-80" required name="p2.1.2" value="1" /><label class="form-check-label" for="formCheck-80"><strong>Si</strong></label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input fs-5" type="radio" id="formCheck-81" required name="p2.1.2" value="0" /><label class="form-check-label" for="formCheck-81"><strong>No</strong></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.1.3 ¿Ha colaborado con otros profesionales a través de las redes sociales académicas en proyectos académicos o de investigación?</h5>
+                </div>
+                <div>
+                  <div id="check">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input fs-5" type="radio" id="formCheck-82" required name="p2.1.3" value="1" /><label class="form-check-label" for="formCheck-82"><strong>Si</strong></label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input fs-5" type="radio" id="formCheck-83" required name="p2.1.3" value="0" /><label class="form-check-label" for="formCheck-83"><strong>No</strong></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div>
+                <h5>2.2 Compartir información y contenidos en las redes.</h5>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <h5>2.2.1. ¿Utilizas etiquetas para organizar y compartir información con otros usuarios o sistemas en una red?</h5>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-25" required name="p2.2.1" value="1" /><label class="form-check-label" for="formCheck-25"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-26" required name="p2.2.1" value="0" /><label class="form-check-label" for="formCheck-26"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <h5>2.2.2 ¿Comparte regularmente información relevante y actualizada en sus perfiles de redes sociales profesionales?</h5>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-84" required name="p2.2.2" value="1" /><label class="form-check-label" for="formCheck-84"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-85" required name="p2.2.2" value="0" /><label class="form-check-label" for="formCheck-85"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <h5>2.2.3 ¿Ha contribuido a la difusión de contenidos de calidad relacionados con su campo profesional a través de las redes sociales?</h5>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-86" required name="p2.2.3" value="1" /><label class="form-check-label" for="formCheck-86"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-87" required name="p2.2.3" value="0" /><label class="form-check-label" for="formCheck-87"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <h5>2.2.4 ¿Interactúa con otros profesionales a través de la discusión y el intercambio de contenidos en las redes sociales?</h5>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-88" required name="p2.2.4" value="1" /><label class="form-check-label" for="formCheck-88"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-89" required name="p2.2.4" value="0" /><label class="form-check-label" for="formCheck-89"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <h5>2.2.5 ¿Ha participado en la creación de debates o conversaciones en torno a temas relevantes para su campo profesional en las redes sociales?</h5>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-126" required name="p2.2.5" value="1" /><label class="form-check-label" for="formCheck-126"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-127" required name="p2.2.5" value="0" /><label class="form-check-label" for="formCheck-127"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>2.3 ¿Has participado en comunidades de práctica virtuales relacionadas con las Ciencias de la Información?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-27" required name="p2.3" value="1" /><label class="form-check-label" for="formCheck-27"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-28" required name="p2.3" value="0" /><label class="form-check-label" for="formCheck-28"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>2.4 ¿Tiene experiencia en la confección de presentaciones profesionales para comunicar información relevante?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-29" required name="p2.4" value="1" /><label class="form-check-label" for="formCheck-29"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-30" required name="p2.4" value="0" /><label class="form-check-label" for="formCheck-30"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div>
+                <h5>2.5 Participación e interacción en eventos virtuales</h5>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.5.1 ¿Ha participado en eventos online?</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-31" required name="p2.5.1" value="1" /><label class="form-check-label" for="formCheck-31"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-32" required name="p2.5.1" value="0" /><label class="form-check-label" for="formCheck-32"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.5.2 ¿Sabe interactuar de manera efectiva con el auditorio virtual durante eventos en línea?</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-33" required name="p2.5.2" value="1" /><label class="form-check-label" for="formCheck-33"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-34" required name="p2.5.2" value="0" /><label class="form-check-label" for="formCheck-34"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.5.3 ¿Ha asistido a eventos virtuales como oyente o espectador?</h5>
+                </div>
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-128" required name="p2.5.3" value="1" /><label class="form-check-label" for="formCheck-128"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-129" required name="p2.5.3" value="0" /><label class="form-check-label" for="formCheck-129"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div>
+                <h5>2.6 Creación de páginas web</h5>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.6.1 ¿Tiene experiencia en la creación de páginas web profesionales para promover su trabajo o su empresa?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-35" required name="p2.6.1" value="1" /><label class="form-check-label" for="formCheck-34"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-36" required name="p2.6.1" value="0" /><label class="form-check-label" for="formCheck-36"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.6.2 ¿Ha colaborado con otros profesionales en el diseño o desarrollo de páginas web?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-90" required name="p2.6.2" value="1" /><label class="form-check-label" for="formCheck-90"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-91" required name="p2.6.2" value="0" /><label class="form-check-label" for="formCheck-91"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.6.3 ¿Ha utilizado herramientas de colaboración en línea para trabajar en proyectos de creación de páginas web con colegas o clientes?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-92" required name="p2.6.3" value="1" /><label class="form-check-label" for="formCheck-92"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-93" required name="p2.6.3" value="0" /><label class="form-check-label" for="formCheck-93"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.6.4 ¿Ha demostrado habilidades para comunicar efectivamente a través de las páginas web que ha creado?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-94" required name="p2.6.4" value="1" /><label class="form-check-label" for="formCheck-94"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-95" required name="p2.6.4" value="0" /><label class="form-check-label" for="formCheck-95"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>2.6.5 ¿Ha compartido información relevante a través de las páginas web que ha diseñado y desarrollado?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-96" required name="p2.6.5" value="1" /><label class="form-check-label" for="formCheck-96"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-97" required name="p2.6.5" value="0" /><label class="form-check-label" for="formCheck-97"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>2.7 ¿Comparte información a través del correo electrónico de manera efectiva y profesional?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-37" required name="p2.7" value="1" /><label class="form-check-label" for="formCheck-37"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-38" required name="p2.7" value="0" /><label class="form-check-label" for="formCheck-38"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>2.8 ¿Comparte información a través de dispositivos móviles de forma segura y adecuada para su entorno profesional?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-98" required name="p2.8" value="1" /><label class="form-check-label" for="formCheck-98"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-99" required name="p2.8" value="0" /><label class="form-check-label" for="formCheck-99"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- AREA DE COMPETENCIA EQUIPAMIENTO (3) -->
+          <div class="carousel-item align-self-center me-md-0 ms-md-0 ps-md-1">
+            <div>
+              <h3>
+                Área de Competencia:
+                <strong>EQUIPAMIENTO</strong>
+              </h3>
+            </div>
+
+            <section class="d-flex">
+              <div>
+                <h5>3.1 ¿Tiene conocimiento detallado de los componentes internos de un ordenador y sus periféricos?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-39" required name="p3.1" value="1" /><label class="form-check-label" for="formCheck-39"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-40" required name="p3.1" value="0" /><label class="form-check-label" for="formCheck-40"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>3.2 ¿Está familiarizado con el funcionamiento y la configuración de equipamiento e infraestructuras básicas de comunicaciones y redes, como routers, switches, cables de red, etc.?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-41" required name="p3.2" value="1" /><label class="form-check-label" for="formCheck-41"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-42" required name="p3.2" value="0" /><label class="form-check-label" for="formCheck-42"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>3.3 ¿Puede identificar y solucionar problemas comunes relacionados con el equipamiento de comunicaciones y redes?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-100" required name="p3.3" value="1" /><label class="form-check-label" for="formCheck-100"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-100" required name="p3.3" value="0" /><label class="form-check-label" for="formCheck-100"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>3.4 ¿Está familiarizado con el manejo seguro y adecuado del equipamiento específico requerido para su área de trabajo?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-101" required name="p3.4" value="1" /><label class="form-check-label" for="formCheck-101"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-102" required name="p3.4" value="0" /><label class="form-check-label" for="formCheck-102"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>3.5 ¿Ha recibido la formación necesaria para utilizar el equipamiento de manera eficiente y segura?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-103" required name="p3.5" value="1" /><label class="form-check-label" for="formCheck-103"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-104" required name="p3.5" value="0" /><label class="form-check-label" for="formCheck-104"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>3.6 ¿Es capaz de identificar y reportar de manera oportuna cualquier problema o mal funcionamiento del equipamiento?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-105" required name="p3.6" value="1" /><label class="form-check-label" for="formCheck-105"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-106" required name="p3.6" value="0" /><label class="form-check-label" for="formCheck-106"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>3.7 ¿Ha participado en la actualización o mejora del equipamiento utilizado en su área de trabajo?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-107" required name="p3.7" value="1" /><label class="form-check-label" for="formCheck-107"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-108" required name="p3.7" value="0" /><label class="form-check-label" for="formCheck-108"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <!-- AREA DE COMPETENCIA SOFTWARE O PROGRAMAS (4) -->
+            <section>
+              <div>
+                <h3>
+                  Área de Competencia:
+                  <strong>SOFTWARE O PROGRAMAS</strong>
+                </h3>
+              </div>
+            </section>
+            <section>
+              <div>
+                <h5>4.1 Conocimiento de paquetes ofimáticos, navegadores, aplicaciones de correo electrónico.</h5>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>4.1.1 ¿Tiene experiencia en el uso efectivo de paquetes ofimáticos como Microsoft Office o Google Workspace para realizar tareas profesionales?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-109" required name="p4.1.1" value="1" /><label class="form-check-label" for="formCheck-109"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-110" required name="p4.1.1" value="0" /><label class="form-check-label" for="formCheck-110"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>4.1.2 ¿Está familiarizado con el uso y la configuración de navegadores web populares como Chrome, Firefox o Edge?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-111" required name="p4.1.2" value="1" /><label class="form-check-label" for="formCheck-111"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-112" required name="p4.1.2" value="0" /><label class="form-check-label" for="formCheck-112"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>4.1.3 ¿Utiliza aplicaciones de correo electrónico como Outlook, Gmail o Thunderbird de manera eficiente para gestionar la comunicación profesional?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-113" required name="p4.1.3" value="1" /><label class="form-check-label" for="formCheck-113"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-114" required name="p4.1.3" value="0" /><label class="form-check-label" for="formCheck-114"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div>
+                <h5>4.2 Instalación y actualización de aplicaciones.</h5>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>4.2.1 ¿Ha realizado la instalación de software y aplicaciones en entornos profesionales de manera autónoma y efectiva?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-45" required name="p4.2.1" value="1" /><label class="form-check-label" for="formCheck-45"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-46" required name="p4.2.1" value="0" /><label class="form-check-label" for="formCheck-46"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>4.2.2 ¿Está al tanto de las mejores prácticas para mantener actualizadas las aplicaciones y el software en sus dispositivos?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-115" required name="p4.2.2" value="1" /><label class="form-check-label" for="formCheck-115"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-116" required name="p4.2.2" value="0" /><label class="form-check-label" for="formCheck-116"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sub_task" class="d-flex">
+                <div>
+                  <h5>4.2.3 ¿Ha configurado y personalizado aplicaciones según las necesidades específicas de su entorno laboral?</h5>
+                </div>
+
+                <div id="check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-131" required name="p4.2.3" value="1" /><label class="form-check-label" for="formCheck-131"><strong>Si</strong></label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input fs-5" type="radio" id="formCheck-132" required name="p4.2.3" value="0" /><label class="form-check-label" for="formCheck-132"><strong>No</strong></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- AREA DE COMPETENCIA SEGURIDAD (5) -->
+          <div class="carousel-item align-self-center me-md-0 ms-md-0 ps-md-1">
+            <section>
+              <div>
+                <h3>Área de Competencia:<strong>SEGURIDAD</strong></h3>
+              </div>
+            </section>
+            <section class="d-flex">
+              <div>
+                <h5>5.1 ¿Comprende y aplica prácticas de seguridad digital, como el uso de contraseñas seguras y el conocimiento de las amenazas de seguridad?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-57" required name="p5.1" value="1" /><label class="form-check-label" for="formCheck-57"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-58" required name="p5.1" value="0" /><label class="form-check-label" for="formCheck-58"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>5.2¿Protege la privacidad personal y de otros al utilizar servicios en línea?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-61" required name="p5.2" value="1" /><label class="form-check-label" for="formCheck-61"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-62" required name="p5.2" value="0" /><label class="form-check-label" for="formCheck-62"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>5.3 3 ¿Reconoce y evita el phishing, el malware y otras amenazas digitales?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-63" required name="p5.3" value="1" /><label class="form-check-label" for="formCheck-63"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-64" required name="p5.3" value="0" /><label class="form-check-label" for="formCheck-64"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>5.4 ¿Utiliza herramientas y medidas de seguridad para proteger la información y los datos digitales?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-65" required name="p5.4" value="1" /><label class="form-check-label" for="formCheck-65"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-66" required name="p5.4" value="0" /><label class="form-check-label" for="formCheck-66"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>5.5 ¿Tiene conocimiento de las políticas de seguridad de la información de su organización y las sigue de manera consistente?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-70" required name="p5.5" value="1" /><label class="form-check-label" for="formCheck-70"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-71" required name="p5.5" value="0" /><label class="form-check-label" for="formCheck-71"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>5.6 ¿Ha recibido formación en ciberseguridad y demuestra prácticas seguras en el manejo de información confidencial?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-117" required name="p5.6" value="1" /><label class="form-check-label" for="formCheck-117"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-117" required name="p5.6" value="0" /><label class="form-check-label" for="formCheck-117"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <!-- AREA DE COMPETENCIA SOLUCIÓN DE PROBLEMAS (6) -->
+
+            <section>
+              <div>
+                <h3>
+                  Área de Competencia:
+                  <strong>SOLUCIÓN DE PROBLEMAS</strong>
+                </h3>
+              </div>
+            </section>
+            <section class="d-flex">
+              <div>
+                <h5>6.1 ¿Aplica métodos y técnicas para resolver problemas técnicos y de información?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-49" required name="p6.1" value="1" /><label class="form-check-label" for="formCheck-49"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-50" required name="p6.1" value="0" /><label class="form-check-label" for="formCheck-50"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>6.2 ¿Identifica y analiza problemas relacionados con el uso de la información y la tecnología digital?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-51" required name="p6.2" value="1" /><label class="form-check-label" for="formCheck-51"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-52" required name="p6.2" value="0" /><label class="form-check-label" for="formCheck-52"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>6.3 ¿Innova creativamente utilizando tecnologías en su área de trabajo?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-53" required name="p6.3" value="1" /><label class="form-check-label" for="formCheck-53"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-54" required name="p6.3" value="0" /><label class="form-check-label" for="formCheck-54"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>6.4 ¿Identifica las limitaciones propias de sus competencias digitales y busca formas de superarlas?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-55" required name="p6.4" value="1" /><label class="form-check-label" for="formCheck-55"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-56" required name="p6.4" value="0" /><label class="form-check-label" for="formCheck-56"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>6.5 ¿Demuestra habilidad para identificar y definir claramente los problemas que surgen en su área de trabajo?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-118" required name="p6.5" value="1" /><label class="form-check-label" for="formCheck-118"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-119" required name="p6.5" value="0" /><label class="form-check-label" for="formCheck-119"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>6.6 ¿Es capaz de analizar de manera crítica y lógica los problemas antes de proponer soluciones?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-120" required name="p6.6" value="1" /><label class="form-check-label" for="formCheck-120"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-121" required name="p6.6" value="0" /><label class="form-check-label" for="formCheck-121"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>6.7 ¿Considera y evalúa diferentes alternativas antes de tomar decisiones en la resolución de problemas?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-122" required name="p6.7" value="1" /><label class="form-check-label" for="formCheck-122"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-123" required name="p6.7" value="0" /><label class="form-check-label" for="formCheck-123"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="d-flex">
+              <div>
+                <h5>6.8 ¿Trabaja de manera colaborativa para resolver problemas, buscando aportes y perspectivas de otros profesionales cuando es necesario?</h5>
+              </div>
+              <div id="check">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-124" required name="p6.8" value="1" /><label class="form-check-label" for="formCheck-124"><strong>Si</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input fs-5" type="radio" id="formCheck-125" required name="p6.8" value="0" /><label class="form-check-label" for="formCheck-125"><strong>No</strong></label>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="d-flex" style="justify-content:space-around;z-index: 100; position: relative; padding-bottom: 26px;padding-top:6rem;">
+          {% comment %} <div>
+            <button class="btn btn-primary" data-bs-slide="prev" href="#myCarousel" type="button" style="margin-left: 1rem;margin-right: 20rem;">Previous</button>
+          </div> {% endcomment %}
+
+          <div>
+            <button data-bs-slide="prev" href="#myCarousel" class="controls" style="rotate: 180deg;color: ;">
+              <span style="background:  RGBA(55, 99, 244, var(--bs-bg-opacity, 1));" class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+              <span style="rotate: 180deg;" class="button-text">Anterior</span>
+            </button>
+          </div>
+
+          <div>
+            <button class="btn btn-primary" type="submit" id="btn-finalizar">Finalizar</button>
+          </div>
+          {% comment %} <div>
+            <button class="btn btn-primary" data-bs-toglle="modal" data-bs-target="#modalResultado1">modal prueba</button>
+          </div> {% endcomment %}
+
+          {% comment %} <div>
+            <button class="btn btn-primary" data-bs-slide="next" href="#myCarousel" type="button" style="margin-left: 20rem;">Next</button>
+          </div> {% endcomment %}
+
+          <div>
+            <button data-bs-slide="next" href="#myCarousel" class="controls">
+              <span style="background:  RGBA(55, 99, 244, var(--bs-bg-opacity, 3));" class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+              <span class="button-text">Siguiente</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- --Controls- -->
+    </div>
+  </div>
+
+  <style>
+    button {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+      vertical-align: middle;
+      text-decoration: none;
+      background: transparent;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    
+    button.controls {
+      width: 12rem;
+      height: auto;
+    }
+    
+    button.controls .circle {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      position: relative;
+      display: block;
+      margin: 0;
+      width: 3rem;
+      height: 3rem;
+      background: #282936;
+      border-radius: 1.625rem;
+    }
+    
+    button.controls .circle .icon {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: #fff;
+    }
+    
+    button.controls .circle .icon.arrow {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      left: 0.625rem;
+      width: 1.125rem;
+      height: 0.125rem;
+      background: none;
+    }
+    
+    button.controls .circle .icon.arrow::before {
+      position: absolute;
+      content: '';
+      top: -0.26rem;
+      right: 0.0625rem;
+      width: 0.625rem;
+      height: 0.625rem;
+      border-top: 0.125rem solid #fff;
+      border-right: 0.125rem solid #fff;
+      transform: rotate(45deg);
+    }
+    
+    button.controls .button-text {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 0;
+      margin: 0 0 0 1.85rem;
+      color: #282936;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    
+    button:hover .circle {
+      width: 100%;
+    }
+    
+    button:hover .circle .icon.arrow {
+      background: #fff;
+      transform: translate(1rem, 0);
+    }
+    
+    button:hover .button-text {
+      color: #fff;
+    }
+  </style>
+
+  <!-- -Modal resulatdo encuesta-- -->
+ 
+  <div class="modal fade" id="modalResultado2" aria-hidden="true" aria-labelledby="modalResultado2" tabindex="-1">
+    <div style="justify-content: center;" class="modal-dialog modal-dialog-centered">
+      <div style="width: auto!important; height: auto;" class="modal-content">
+        <div class="modal-header">
+          <p style="justify-content: center;" class="modal-title fs-5" id="modalResultado2">Evaluación de las áreas de Competencia</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="d-flex modal-body">
+          <div>
+            <p>Lo sentimos, tiene una evaluación general de Mal ya que incumple con una de las preguntas invalidantes.</p>
+          </div>
+        </div>
+
+       
+      </div>
+    </div>
+  </div>
+
+  <div id="alert" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="icon-box">
+            <i class="material-icons">&#xE5CD;</i>
+          </div>
+          <img src="{% static 'dist/img/no.webp' %}" style="margin-top: 3px!important; height:200px;width: 180px; " alt="" />
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+        </div>
+        <div class="modal-body text-center">
+          <h5>Ooops!</h5>
+          <p>Something went wrong. File was not uploaded.</p>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Try Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boton de ir hacia arriba -->
+  <div style="z-index: 120;" id="button-up">
+    <a class="fas fa-chevron-up" href="page-top"></a>
+  </div>
+
+  <script src="{% static 'dist/js/survey.js' %}"></script>
+{% endblock %}
