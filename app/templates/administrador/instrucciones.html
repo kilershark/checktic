@@ -1,10 +1,8 @@
 {% extends 'administrador/base2.html' %}
 {% load static %}
 
-
-
 {% block contenido %}
-  <div style="z-index: 100; position: relative;">
+  {% comment %} <div style="z-index: 100; position: relative;">
     <div class="text-start d-lg-flex justify-content-lg-start">
       <div class="d-inline-block">
         <div style="margin-left: 8px;margin-right: -44px; margin-top: 45px;">
@@ -29,7 +27,7 @@
             <p class="text-start mb-4">
               <br />
 
-              <!--   <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+              <!--     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
             fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill"
             style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
             <path
@@ -38,7 +36,7 @@
           </svg>&nbsp;Lee las instrucciones: Antes de comenzar, te recomendamos leer atentamente estas instrucciones
           para comprender cómo se evaluarán las áreas de
           competencia y qué significan las opciones de evaluación.<br><br>
-             -->
+               -->
 
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill" style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
                 <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"></path>
@@ -102,6 +100,92 @@
       <a class="btn btn-primary fs-5" role="button" href="{% url 'inicio' %}" style="margin-right: 22px;">Volver atras</a>
     </section>
     <!-- <div><img src="img/explain.png" height="300" width="435" style="margin-top: 2rem;border-radius: 200px;"></div> -->
+  </section> {% endcomment %}
+  <div class="container-fluid">
+    <div class="text-start d-lg-flex justify-content-lg-start">
+      <div class="d-inline-block">
+        <div>
+          <h1 class="fs-3 text-center"><strong>Que debes tener en cuenta para realizar la encuesta?.<br />Estas y muchas más serán las respuestas que te brindaremos a continuación.</strong></h1>
+        </div>
+
+        <div>
+          <h2 class="fs-5 text-center">ChecksTIC es una herramienta informática en ambiente web, para diagnosticar el nivel que poseen los profesionales de la información acerca de las competencias informacionales y digitales necesarias para un adecuado desempeño.</h2>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 d-none d-md-block mt-4">
+        <img src="{% static 'dist/img/explain.gif' %}" height="300" width="435" class="responsive-image" style="margin-top: 2rem; border-radius: 200px;" />
+
+      </div>
+    </div>
+  </div>
+
+  <section class="py-3 py-xl-3">
+    <div class="container-fluid h-100">
+      <div class="row h-100">
+        <div class="col-12">
+          <div>
+            <p class="text-start mb-4">
+              <br />
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill" style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
+                <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"></path>
+              </svg>&nbsp;Este diagnóstico permitirá a las organizaciones ejecutar programas de alfabetización informacional y digital más acertados y eficientes, ya que se podrá personalizar el mismo en correspondencia con las brechas de conocimientos detectadas.<br /><br />
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill" style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
+                <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"></path>
+              </svg>&nbsp;Áreas de competencia: La encuesta consta de 6 áreas de competencia. Cada área representa una habilidad o conocimiento específico que queremos evaluar. A medida que avanzas en la encuesta, te dirigiremos a cada una de estas áreas de forma secuencial.<br /><br />
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill" style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
+                <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"></path>
+              </svg>&nbsp;"Para cada área de competencia, se te presentarán varias preguntas relacionadas. Debes responder con "sí" o "no" a cada pregunta. Posteriormente, recibirás una evaluación porcentual entre 0 y 100 en cada área, junto con una evaluación de "bien", "regular" o "mal" que podrás visualizar en la página de evaluación."<br />&nbsp; &nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-caret-right-fill">
+                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
+              </svg>"Bien": Indica que tienes un buen dominio en esa área de competencia y te sientes confiado/a en tu capacidad para desempeñarte en ella.<br />&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-caret-right-fill">
+                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
+              </svg>"Regular": Indica que tienes un nivel medio de dominio en esa área de competencia. Puedes desenvolverte en ella, pero aún hay espacio para mejorar.<br />&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-caret-right-fill">
+                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
+              </svg>"Mal": Indica que tienes un bajo nivel de dominio en esa área de competencia y te sientes inseguro/a o poco preparado/a en ella. Es un área en la que necesitas trabajar.<br /><br />
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill" style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
+                <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"></path>
+              </svg>&nbsp;Que representan las evaluaciones de "Bien", "Regular" y "Mal"?<br />&nbsp; &nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-caret-right-fill">
+                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
+              </svg>"Bien": Indica que tienes un buen dominio en esa área de competencia y te sientes confiado/a en tu capacidad para desempeñarte en ella.<br />&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-caret-right-fill">
+                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
+              </svg>"Regular": Indica que tienes un nivel medio de dominio en esa área de competencia. Puedes desenvolverte en ella, pero aún hay espacio para mejorar.<br />&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-caret-right-fill">
+                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
+              </svg>"Mal": Indica que tienes un bajo nivel de dominio en esa área de competencia y te sientes inseguro/a o poco preparado/a en ella. Es un área en la que necesitas trabajar.<br /><br />
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill" style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
+                <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"></path>
+              </svg>&nbsp;Si en algún momento deseas cambiar una respuesta anterior puedes hacerlo antes de finalizar la encuesta. Solo asegúrate de revisar y ajustar tus evaluaciones antes de completarla.<br /><br />
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill" style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
+                <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"></path>
+              </svg>&nbsp; Una vez que hayas evaluado todas las preguntas en cada área de competencia, podrás finalizar la encuesta. Al hacerlo, tus respuestas se enviarán para su análisis y se almacenarán de forma segura.<br /><br />
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin-angle-fill" style="font-size: 23px;padding-bottom: 0px;padding-top: 0px;margin-top: -3px;">
+                <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"></path>
+              </svg>&nbsp;Puedas acceder a tus resultados y recibir comentarios o recomendaciones basadas en tus evaluaciones. Esto te proporcionará una visión general de tus fortalezas y áreas de mejora en las diferentes competencias evaluadas.
+            </p>
+
+            <h4>¡Gracias por participar en nuestra encuesta de evaluación de competencias! Tus respuestas son valiosas para nosotros, y esperamos que esta experiencia te resulte útil.</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="d-flex">
+    <section>
+      <a class="btn btn-primary fs-5" role="button" href="{% url 'inicio' %}">Volver atrás</a>
+    </section>
   </section>
 {% endblock %}
 

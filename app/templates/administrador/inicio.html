@@ -3,6 +3,72 @@
 
 {% block contenido %}
   <header>
+    <div class="container-xl pt-3">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="m-2 pt-0 pt-md-5">
+            <p class="fs-3 fs-md-4 text-center">
+              <strong>¡BIENVENIDO A NUESTRA ENCUESTA DE EVALUACIÓN DE COMPETENCIAS!</strong>
+            </p>
+            <p class="fs-5 fs-md-6 text-center">
+              Antes de comenzar le recomendamos leer atentamente estas instrucciones para comprender cómo se evaluarán las diferentes áreas<br /><br /><br />
+            </p>
+          </div>
+
+          <div class="row justify-content-center">
+            <form class="col-8 col-sm-8 mb-3 mb-sm-0 text-center" action="{% url 'verificar_encuesta' %}" method="post">
+              <button class="btn btn-primary w-100" type="submit">Entonces, vamos a la encuesta</button>
+            </form>
+
+            <a class="btn btn-outline-info fs-6 col-8 col-sm-4 mt-2 mt-sm-0 text-center" href="{% url 'instrucciones' %}" role="button">&nbsp;Instrucciones</a>
+          </div>
+        </div>
+
+        <div class="col-lg-5 order-1 order-lg-2 hero-img aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{% static 'dist/img/inicio.png' %}" class="img-fluid animated bounce d-none d-lg-block" alt="" />
+        </div>
+
+        {% comment %} <div class="col-lg-5 order-1 order-lg-2">
+          <video class="img-fluid" width="100%" height="auto" src="{% static 'dist/media/cover2.mp4' %}" autoplay playinline loop muted preload="auto"></video>
+        </div> {% endcomment %}
+      </div>
+    </div>
+
+    {% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalResultado2">Open Modal</button> {% endcomment %}
+  </header>
+
+  {% comment %} <header>
+    <div class="container pt-3">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="m-4">
+            <p class="fs-3 text-center">
+              <strong>¡BIENVENIDO A NUESTRA ENCUESTA DE EVALUACIÓN DE COMPETENCIAS!</strong>
+            </p>
+            <p class="fs-5 text-center">
+              Antes de comenzar le recomendamos leer atentamente estas instrucciones para comprender cómo se evaluarán las diferentes áreas<br /><br /><br />
+            </p>
+          </div>
+
+          <div class="row">
+            <form class="col-12 col-sm-8 mb-3 mb-sm-0" action="{% url 'verificar_encuesta' %}" method="post">
+              <button class="btn btn-primary w-100" type="submit">Entonces, vamos a la encuesta</button>
+            </form>
+
+            <a class="btn btn-outline-info fs-6 col-12 col-sm-4 mt-2 mt-sm-0" href="{% url 'instrucciones' %}" role="button">&nbsp;Instrucciones</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 d-none d-md-block mt-4">
+          <video width="100%" height="auto" src="{% static 'dist/media/cover2.mp4' %}" autoplay playinline loop muted preload="auto"></video>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalResultado2">Open Modal</button>
+  </header> {% endcomment %}
+
+  {% comment %} <header>
     <div class="container pt-3">
       <div class="row">
         <div class="col-md-6">
@@ -30,11 +96,11 @@
       </div>
     </div>
 
-    {% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalResultado2">Open Modal</button> {% endcomment %}
-  </header>
+    {% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalResultado2">Open Modal</button>
+  </header> {% endcomment %}
 
   <!-- Modal de que ha realizado la encuesta--- -->
-
+ 
   {% comment %} <div style="height: auto;" class="modal fade" id="modalResultado2" aria-hidden="true" aria-labelledby="modalResultado2" tabindex="-1">
     <div style="justify-content: center;" class="modal-confirm modal-dialog modal-dialog-centered">
       <div style="width: 50%;" class="modal-content">

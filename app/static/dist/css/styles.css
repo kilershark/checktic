@@ -17651,7 +17651,7 @@ body {
   border-color: rgba(0, 0, 0, 0);
 }
 .nav-fixed #layoutSidenav #layoutSidenav_content {
-  padding-left: 12rem;
+  padding-left: 15rem;
   top: 3.625rem;
 }
 
@@ -17666,6 +17666,10 @@ body {
   transform: translateX(0);
 }
 @media (min-width: 992px) {
+  .nav-fixed #layoutSidenav #layoutSidenav_content {
+    padding-left: 12rem;
+  }
+
   .layout-rtl #layoutSidenav #layoutSidenav_nav {
     transform: translateX(0);
   }

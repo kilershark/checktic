@@ -154,7 +154,12 @@
       text-align-last: center;
     }
   </style>
-
+  <script>
+    $(document).ready(function () {
+      $('#dataTable').DataTable();
+  });
+  
+  </script>
 
   <script src="{% static 'dist/js/jquery.dataTables.min.js' %}"></script>
   <script src="{% static 'dist/js/dataTables.bootstrap4.min.js' %}"></script>

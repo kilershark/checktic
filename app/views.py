@@ -14,6 +14,7 @@ from .forms import *
 
 
 
+
 def nuevo(request):
   return render(request, 'administrador/nuevo.html')
 
@@ -182,6 +183,10 @@ def listado_users(request):
     return render(request, 'administrador/listado_users.html', {'users': users, 'profiles': profiles, 'resultadosuser': resultadosuser })
 
 def listado_depart(request):
+    mensaje = request.session.pop('mensaje', '')  
+   
+    print(mensaje)
+    
     departamentos = Departamento.objects.all()
     
     # Dividir la lista de departamentos en dos partes iguales
@@ -192,12 +197,16 @@ def listado_depart(request):
     context = {
         'departamentos1': departamentos1,
         'departamentos2': departamentos2,
+        'mensaje': mensaje,
+        
     }
-    return render(request, 'administrador/listado_depart.html', context)
+    return render(request, 'administrador/listado_depart.html', context )
     
    
 
 def listado_At(request):
+    mensaje = request.session.pop('mensaje', '')
+
     area_trabajo = AreaTrabajo.objects.all()
 
     # Dividir la lista de areas de trabajo en dos partes iguales
@@ -208,6 +217,7 @@ def listado_At(request):
     context = {
         'area_trabajo1': area_trabajo1,
         'area_trabajo2': area_trabajo2,
+        'mensaje': mensaje,
     }
 
     return render(request, 'administrador/listado_At.html', context)
@@ -260,10 +270,12 @@ def verificar_encuesta(request):
 ############################## Vistas relacionadas a la gestion de departamentos y areas de trabajo #########################
 
 #########################   DEPARTAMENTO ##############################
-def departamento_list(request):
-    departamentos = Departamento.objects.all()
+
+# def departamento_list(request):
+#     mensaje = request.session.pop('mensaje', '')  # Obtiene y elimina el mensaje de la sesión
+#     departamentos = Departamento.objects.all()
     
-    return render(request, 'administrador/listado_depart.html', {'departamentos':departamentos})
+#     return render(request, 'administrador/listado_depart.html', {'departamentos':departamentos, 'mensaje': mensaje})
 
     
 def agregar_departamento(request):
@@ -271,7 +283,7 @@ def agregar_departamento(request):
         form = DepartamentoForm(request.POST)
         if form.is_valid():
             departamento = form.save()  # Guardar el departamento en la base de datos
-            # messages.success(request, "Agregado correctamente")
+            request.session['mensaje'] = 'Departamento agregado correctamente.'  # Guardar en la sesión
             return redirect('listado_depart')  # Reemplaza 'nombre_de_la_url' con la URL a la que deseas redirigir después de agregar el departamento
     else:
         form = DepartamentoForm()
@@ -281,80 +293,98 @@ def agregar_departamento(request):
     }
     return render(request, 'administrador/listado_depart.html', context)
 
-
-
-def modificar_departamento(request, departamento_id):
-    if request.method == 'POST':
-        nuevo_nombre = request.POST.get('nuevo_nombre')
-        departamento = Departamento.objects.get(id=departamento_id)
+def modificar_departamento(request, id_departamento):
+    departamento = get_object_or_404(Departamento, id=id_departamento)
+    
+    nuevo_nombre = request.POST.get('nuevo_nombre')
+    if nuevo_nombre:
         departamento.nombre = nuevo_nombre
         departamento.save()
-        # Redirigir de vuelta a la página original
-        return redirect('listado_depart')
-    else:
-        # Manejar el caso en el que no se realiza una solicitud POST
-        # Puede mostrar un mensaje de error o realizar otra acción
-        pass
+        request.session['mensaje'] = 'Departamento modificado correctamente.'  # Guardar en la sesión
+
+        print(messages)
+    return redirect('listado_depart')  # Redirige a la vista de listado
+
+
+
+# def eliminar_departamento(request, departamento_id):
+#     if request.method == 'POST':
+#         departamento = Departamento.objects.get(id=departamento_id)
+#         departamento.delete()
+        
+#         return redirect('listado_depart')
+#     else:
+#         # Manejar el caso en el que no se realiza una solicitud POST
+#         # Puede mostrar un mensaje de error o realizar otra acción
+#         pass
 
 def eliminar_departamento(request, departamento_id):
     if request.method == 'POST':
         departamento = Departamento.objects.get(id=departamento_id)
         departamento.delete()
-        # Redirigir a una página de confirmación o a la página original
+        
+        # Agregar un mensaje de éxito
+        request.session['mensaje'] = 'Departamento eliminado correctamente.'  # Guardar en la sesión
+        
         return redirect('listado_depart')
     else:
         # Manejar el caso en el que no se realiza una solicitud POST
-        # Puede mostrar un mensaje de error o realizar otra acción
-        pass
-
+        messages.error(request, 'No se pudo eliminar el departamento. Inténtalo de nuevo.')
+        return redirect('listado_depart')
 
 
 #############################   AREA DE TRABAJO ###############################
 
 def area_list(request):
-    area_trabajo = Area_TrabajoForm.objects.all()
+    area_trabajo = AreaTrabajo.objects.all()
     
     return render(request, 'administrador/listado_At.html', {'area_trabajo':area_trabajo})
 
 
+
 def agregar_area_trabajo(request):
     if request.method == 'POST':
-        form = Area_TrabajoForm(request.POST)
-        if form.is_valid():
-            area_trabajo = form.save()  # Guardar el departamento en la base de datos
-          
-    else:
-        form = Area_TrabajoForm()
-    
-    context = {
-        'form': form
-    }
-    return render(request, 'administrador/listado_At.html', context)
+        nombre = request.POST.get('nombre')
+
+        # Verificar que el nombre no esté vacío
+        if nombre:
+            # Crear una nueva instancia del modelo
+            nueva_area = AreaTrabajo(nombre=nombre)
+            nueva_area.save()
+            request.session['mensaje'] = 'Area de Trabajo agregado correctamente.'  # Guardar en la sesión
+            return redirect('listado_At')  # Redirigir a la vista de listado de áreas de trabajo
+        else:
+            messages.error(request, 'El nombre del área de trabajo no puede estar vacío.')
+
+    return render(request, 'administrador/listado_At.html')  # Cambia esta ruta según tu estructura de carpetas
+
+
 
 
 def modificar_area_trabajo(request, area_trabajo_id):
     if request.method == 'POST':
         # Obtener el departamento a modificar
-        area_trabajo = Area_TrabajoForm.objects.get(id=area_trabajo_id)
+        area_trabajo = AreaTrabajo.objects.get(id=area_trabajo_id)
 
         # Actualizar el nombre del departamento
         nuevo_nombre = request.POST.get('nuevo_nombre')
         area_trabajo.nombre = nuevo_nombre
         area_trabajo.save()
-
+        request.session['mensaje'] = 'Area de Trabajo modificada correctamente.'  # Guardar en la sesión
         # Redirigir a la vista de listado de departamentos
         return redirect('listado_At')
     else:
         # Obtener el departamento a modificar
-        area_trabajo = Area_TrabajoForm.objects.get(id=area_trabajo_id)
+        area_trabajo = AreaTrabajo.objects.get(id=area_trabajo_id)
 
         # Renderizar el template con el departamento a modificar
         return render(request, 'administrador/listado_At.html', {'area_trabajo': area_trabajo})
     
 def eliminar_area_trabajo(request, area_trabajo_id):
     if request.method == 'POST':
-        area_trabajo = Area_TrabajoForm.objects.get(id=area_trabajo_id)
+        area_trabajo = AreaTrabajo.objects.get(id=area_trabajo_id)
         area_trabajo.delete()
+        request.session['mensaje'] = 'Area de Trabajo eliminada correctamente.'  # Guardar en la sesión
         # Redirigir a una página de confirmación o a la página original
         return redirect('listado_At')
     else:

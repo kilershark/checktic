@@ -76,13 +76,12 @@
                   </div>
                   <div class="col-lg-7">
                     <h1 class="font-weight-light">Área de Información</h1>
-                    <div class="d-flex">
-                      <h4 class="font-weight-light">Evaluación:</h4>&nbsp; <h4>{{ resultado.resultado1 }}</h4><h4>%</h4>
-                      <div style="width: 40%;"></div>
-                      <div style="align-items: center;">
-                        <img style="visibility: hidden;" class="img-fluid mb-4 mb-lg-0" src="{% static 'dist/img/bien.png' %}" alt="..." width="35px" height="35px" />
-                        <img style="visibility: hidden;" class="img-fluid mb-4 mb-lg-0" src="{% static 'dist/img/disminucion.png' %}" alt="..." width="35px" height="35px" />
-                        <img style="visibility: hidden;" class="img-fluid mb-4 mb-lg-0" src="{% static 'dist/img/precaucion.png' %}" alt="..." width="35px" height="35px" />
+                    <div>
+                      <h4 class="font-weight-light">Evaluación:  {{ resultado.resultado1 }}%</h4>
+                      <div class="d-none">
+                        <img class="img-fluid mb-4 mb-lg-0" src="{% static 'dist/img/bien.png' %}" alt="..." width="35px" height="35px" />
+                        <img class="img-fluid mb-4 mb-lg-0" src="{% static 'dist/img/disminucion.png' %}" alt="..." width="35px" height="35px" />
+                        <img class="img-fluid mb-4 mb-lg-0" src="{% static 'dist/img/precaucion.png' %}" alt="..." width="35px" height="35px" />
                       </div>
                     </div>
                     <p>La competencia de información en el ámbito profesional se enfoca en valorar las habilidades de los trabajadores para acceder, evaluar, utilizar y gestionar la información de manera efectiva y responsable, contribuyendo así al éxito y la productividad de la organización.</p>
@@ -108,7 +107,7 @@
                   <div class="col-lg-7">
                     <h1 class="font-weight-light">Área de Colaboración y Comunicación digital</h1>
                     <div class="d-flex">
-                      <h4 class="font-weight-light">Evaluación:</h4>&nbsp;<h4>{{ resultado.resultado2 }}</h4><h4>%</h4>
+                      <h4 class="font-weight-light">Evaluación:  {{ resultado.resultado2 }}%</h4>
                     </div>
                     <p>La competencia en Colaboración y Comunicación digital abarca el dominio de herramientas digitales, la gestión de proyectos y equipos virtuales, así como la habilidad para comunicar de manera efectiva en entornos en línea. Esto permite aprovechar al máximo las ventajas de la tecnología para mejorar la productividad, la coordinación y la interacción en el ámbito profesional.</p>
                     {% comment %} <a class="btn btn-primary" href="#A1" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="A1">Click para ver materiales relacionados</a> {% endcomment %}
@@ -133,7 +132,7 @@
                   <div class="col-lg-7">
                     <h1 class="font-weight-light">Área de Equipamiento</h1>
                     <div class="d-flex">
-                      <h4 class="font-weight-light">Evaluación:</h4>&nbsp;<h4>{{ resultado.resultado3 }}</h4><h4>%</h4>
+                      <h4 class="font-weight-light">Evaluación:  {{ resultado.resultado3 }}%</h4>
                     </div>
                     <p>El área de competencia de equipamiento juega un rol fundamental en la gestión y optimización de los activos físicos de la empresa, garantizando su disponibilidad y eficiencia para respaldar los objetivos de producción y operación.</p>
                     {% comment %} <a class="btn btn-primary" href="#A1" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="A1">Click para ver materiales relacionados</a> {% endcomment %}
@@ -158,7 +157,7 @@
                   <div class="col-lg-7">
                     <h1 class="font-weight-light">Área de Software y Programas</h1>
                     <div class="d-flex">
-                      <h4 class="font-weight-light">Evaluación:</h4>&nbsp;<h4>{{ resultado.resultado4 }}</h4><h4>%</h4>
+                      <h4 class="font-weight-light">Evaluación:  {{ resultado.resultado4 }}%</h4>
                     </div>
                     <p>La competencia en programas y software implica tener un dominio amplio y profundo de una variedad de aplicaciones informáticas, poder configurarlas y personalizarlas según las necesidades, así como la habilidad de aprender y adaptarse a nuevas herramientas digitales. Esto permite un desempeño eficaz y eficiente en las tareas y proyectos que involucran el uso de tecnología.</p>
                     {% comment %} <a class="btn btn-primary" href="#A1" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="A1">Click para ver materiales relacionados</a> {% endcomment %}
@@ -183,7 +182,7 @@
                   <div class="col-lg-7">
                     <h1 class="font-weight-light">Área de Seguridad</h1>
                     <div class="d-flex">
-                      <h4 class="font-weight-light">Evaluación:</h4>&nbsp;<h4>{{ resultado.resultado5 }}</h4><h4>%</h4>
+                      <h4 class="font-weight-light">Evaluación:  {{ resultado.resultado5 }}%</h4>
                     </div>
                     <p>La competencia en seguridad informática abarca la aplicación de controles, la implementación de políticas, la detección y respuesta ante incidentes, y el cumplimiento de normativas. Esto permite salvaguardar los activos digitales y mitigar los riesgos asociados al uso de tecnología, garantizando la confianza y la seguridad en los entornos digitales.</p>
                     {% comment %} <a class="btn btn-primary" href="#A1" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="A1">Click para ver materiales relacionados</a> {% endcomment %}
@@ -208,7 +207,7 @@
                   <div class="col-lg-7">
                     <h1 class="font-weight-light">Área de Solución de Problemas</h1>
                     <div class="d-flex">
-                      <h4 class="font-weight-light">Evaluación:</h4>&nbsp;<h4>{{ resultado.resultado6 }}</h4><h4>%</h4>
+                      <h4 class="font-weight-light">Evaluación:  {{ resultado.resultado6 }}%</h4>
                     </div>
                     <p>La habilidad de solucionar problemas de manera eficaz en el entorno digital actual se basa en un sólido conjunto de competencias que incluyen el análisis crítico, el pensamiento innovador, la evaluación de alternativas y la adaptabilidad. Estas capacidades permiten a los profesionales abordar con éxito las situaciones complejas que se presentan en los contextos digitales de hoy en día.</p>
                     {% comment %} <a class="btn btn-primary" href="#A1" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="A1">Click para ver materiales relacionados</a> {% endcomment %}

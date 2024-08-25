@@ -141,47 +141,36 @@ $(".menu-toggle").click(function () {
 
 //////////////////FUNCION PARA EL CARTEL DE Q FUE AñADIDO CORRECTAMENTE EL DEPARTAMENTO/////////////////
 
-$(document).ready(function () {
 
-    $('#formDepartamento').on('submit', function (event) {
-        event.preventDefault() // Prevenir el envío del formulario
-        // Envío del formulario de manera programática
-        $.post($(this).attr('action'), $(this).serialize(), function (response) {
-            // Limpiar el formulario dentro del modal
-            $('#modalDepartamento').find('form')[0].reset()
 
-            // Mostrar el párrafo oculto
-            $('#Agregado_correctD').show()
-
-            // Ocultar el mensaje y el párrafo después de 5 segundos
-            setTimeout(function () {
-                $('#Agregado_correctD').hide()
-            }, 3000) // Ocultar el mensaje y el párrafo después de 5 segundos
-        })
-    })
-})
 
 //////////////////FUNCION PARA EL CARTEL DE Q FUE AñADIDO CORRECTAMENTE EL Area de Trabajo/////////////////
+// $(document).ready(function () {
+//     var message = $('#toast').attr('mensaje'); // Obtiene el mensaje del atributo data
+//     console.log("Mensaje:", message); // Verifica el valor del mensaje
+//     if (message) {
+//         $('#toast').css('display', 'block'); // Muestra el toast
+//         setTimeout(function () {
+//             $('#toast').css('display', 'none'); // Oculta el toast después de 5 segundos
+//         }, 5000);
+//     } else {
+//         $('#toast').css('display', 'none'); // Asegúrate de que esté oculto si no hay mensaje
+//     }
+// });
+// $(document).ready(function () {
+//     var message = $('#toast').data('mensaje'); // Obtiene el mensaje del atributo data
+//     console.log("Mensaje:", message); // Verifica el valor del mensaje
+//     if (message) {
+//         $('#toast').text(message); // Establece el texto del toast
+//         $('#toast').css('display', 'block'); // Muestra el toast
+//         setTimeout(function () {
+//             $('#toast').css('display', 'none'); // Oculta el toast después de 5 segundos
+//         }, 5000);
+//     } else {
+//         $('#toast').css('display', 'none'); // Asegúrate de que esté oculto si no hay mensaje
+//     }
+// });
 
-$(document).ready(function () {
-
-    $('#formArea_trabajo').on('submit', function (event) {
-        event.preventDefault() // Prevenir el envío del formulario
-        // Envío del formulario de manera programática
-        $.post($(this).attr('action'), $(this).serialize(), function (response) {
-            // Limpiar el formulario dentro del modal
-            $('#modalArea_trabajo').find('form')[0].reset()
-
-            // Mostrar el párrafo oculto
-            $('#Agregado_correctA_t').show()
-
-            // Ocultar el mensaje y el párrafo después de 5 segundos
-            setTimeout(function () {
-                $('#Agregado_correctA_t').hide()
-            }, 3000) // Ocultar el mensaje y el párrafo después de 5 segundos
-        })
-    })
-})
 
 
 ///////////////////////// IMAGEN DEL MODAL DEL MATERIAL*/////////////////
@@ -282,9 +271,6 @@ if (radioDepts) {
 
 
 //////////////// Filtro de departamentos //////////////////////
-$(document).ready(function () {
-    $('#dataTable').DataTable();
-});
 
 
 
@@ -371,12 +357,19 @@ function validateEmail(email) {
 
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
     var form = document.querySelector('form.user');
+    if (!form) {
+        console.error('El formulario no se encontró.');
+        return; // Salir si el formulario no existe
+    }
+
     var submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+
         event.preventDefault();
 
         var primer_nombre = form.querySelector('#exampleFirstName');
@@ -468,7 +461,6 @@ document.addEventListener('DOMContentLoaded', function () {
             form.submit();
         }
     });
-
     function showError(element, message) {
         element.classList.add('is-invalid');
         var errorMessage = element.parentNode.querySelector('.invalid-feedback');
@@ -489,6 +481,125 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     var form = document.querySelector('form.user');
+//     var submitButton = form.querySelector('button[type="submit"]');
+
+//     form.addEventListener('submit', function (event) {
+//         event.preventDefault();
+
+//         var primer_nombre = form.querySelector('#exampleFirstName');
+//         var segundo_nombre = form.querySelector('#exampleLastName');
+//         var email = form.querySelector('#exampleInputEmail');
+//         var username = form.querySelector('#exampleInputUsername');
+//         var password = form.querySelector('#InputPassword');
+//         var repeat_password = form.querySelector('#InputRepeatPassword');
+//         var area_trabajo = form.querySelector('#area_trabajo');
+//         var departamento = form.querySelector('#departamento');
+
+//         var isValid = true;
+
+//         if (primer_nombre.value.trim() === '') {
+//             mostrarParrafoError('corner-textNomb', 10000);
+//             showError(primer_nombre)
+
+//             isValid = false;
+//         }
+
+//         if (segundo_nombre.value.trim() === '') {
+//             mostrarParrafoError('corner-textApell', 10000);
+//             showError(segundo_nombre)
+//             isValid = false;
+//         }
+
+//         // Validar el correo electrónico
+//         if (email.value.trim() === '') {
+//             mostrarParrafoError('corner-textEmailVacio', 10000);
+//             showError(email);
+//             isValid = false;
+//         } else {
+//             const emailValidationResult = validateEmail(email.value);
+//             if (emailValidationResult !== "Correo electrónico válido.") {
+//                 mostrarParrafoError('corner-textEmailInvalido', 10000);
+//                 showError(email);
+//                 isValid = false;
+//             }
+//         }
+
+
+//         if (username.value.trim() === '') {
+//             mostrarParrafoError('corner-textNombuser', 10000);
+//             showError(username)
+//             isValid = false;
+//         }
+
+//         // Validar la contraseña
+//         if (password.value.trim() === '') {
+//             mostrarParrafoError('corner-textContraVacia', 10000);
+//             showError(password);
+//             isValid = false;
+//         } else {
+//             // Validar la contraseña según los requisitos
+//             const passwordValidationResult = validatePassword(password.value);
+//             if (passwordValidationResult !== "Contraseña válida.") {
+//                 mostrarParrafoError('corner-textContraInvalida', 10000);
+//                 showError(password);
+//                 isValid = false;
+//             }
+//         }
+
+
+//         if (repeat_password.value.trim() === '') {
+//             mostrarParrafoError('corner-textRepContra', 10000);
+//             showError(repeat_password)
+
+//             isValid = false;
+//         } else if (repeat_password.value !== password.value) {
+//             mostrarParrafoError('corner-textContra', 10000);
+//             showError(repeat_password)
+
+//             isValid = false;
+//         }
+
+//         if (area_trabajo.value === '') {
+//             mostrarParrafoError('corner-textAt', 10000);
+//             showError(area_trabajo)
+//             isValid = false;
+//         }
+
+//         if (departamento.value === '') {
+//             mostrarParrafoError('corner-textDep', 10000);
+//             showError(departamento)
+//             isValid = false;
+//         }
+
+//         if (isValid) {
+//             form.submit();
+//         }
+//     });
+
+//     function showError(element, message) {
+//         element.classList.add('is-invalid');
+//         var errorMessage = element.parentNode.querySelector('.invalid-feedback');
+//         if (!errorMessage) {
+//             errorMessage = document.createElement('div');
+//             errorMessage.classList.add('invalid-feedback');
+//             element.parentNode.appendChild(errorMessage);
+//         }
+//         errorMessage.textContent = message;
+//     }
+
+//     function showSuccess(element) {
+//         element.classList.remove('is-invalid');
+//         element.classList.add('is-valid');
+//         var errorMessage = element.parentNode.querySelector('.invalid-feedback');
+//         if (errorMessage) {
+//             errorMessage.remove();
+//         }
+//     }
+// });
 
 
 

@@ -3,15 +3,23 @@
 {% block contenido %}
   <!-- Custom styles for this page -->
 
+  <div id="toast" style="display: none;">
+    <div class="toast-content">
+      <i class="fa fa-check-circle" style="margin-right: 10px;"></i>
+      <span id="mensaje-toast">{{ mensaje|default:'' }}</span>
+    </div>
+  </div>
+
   <!-- Page Wrapper -->
 
   <!-- Begin Page Content -->
   <div class="container container-fluid pt-3">
     <div class="card shadow mb-4">
-      <div style="width: 100%; align-items: center;" class="card-header d-flex">
+      <div class="card-header d-flex align-items-center justify-content-between">
         <div>
           <h6 class="m-0 font-weight-bold text-primary">Listado de las Áreas de Trabajo</h6>
         </div>
+
         <div id="botArea" class="py-2">
           <button type="button" data-toggle="modal" data-target="#modalArea_trabajo" class="button">
             <span class="button__text">Área de Trabajo</span>
@@ -56,12 +64,7 @@
                       <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="modalModificarDepartamentoLabel">Modificar Nombre del Departamento</h5>
-
-                            <div id="Agregado_correct" class="mb-0 mt-1" style="white-space: nowrap;display: none; border-radius: 1rem; background-color: lightgreen; margin-left: auto; align-items: baseline;">
-                              <i class="m-2 fa fa-check-circle-o" style="display: inline-block;"></i>
-                              <p class="m-2" style="display: inline-block;">Modificado correctamente</p>
-                            </div>
+                            <h5 class="modal-title" id="modalModificarArea_trabajoLabel">Modificar Nombre del Departamento</h5>
 
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
                           </div>
@@ -69,8 +72,8 @@
                           <form method="post" action="{% url 'modificar_area_trabajo' area_trabajo.id %}">
                             <div class="modal-body">
                               <div class="form-group">
-                                <label for="nuevoNombreDepartamento{{ area_trabajo.id }}">Nuevo nombre del Departamento:</label>
-                                <input type="text" class="form-control" id="nuevoNombreDepartamento{{ area_trabajo.id }}" name="nuevo_nombre" value="{{ area_trabajo.nombre }}" required />
+                                <label for="nuevoNombreAreatrabajo{{ area_trabajo.id }}">Nuevo nombre del Area de Trabajo:</label>
+                                <input type="text" class="form-control" id="nuevoNombreAreaTrabajo{{ area_trabajo.id }}" name="nuevo_nombre" value="{{ area_trabajo.nombre }}" required />
                               </div>
                             </div>
                             <div class="modal-footer justify-content-center">
@@ -125,19 +128,14 @@
                           <div class="modal-header">
                             <h5 class="modal-title" id="modalModificarDepartamentoLabel">Modificar Nombre del Departamento</h5>
 
-                            <div id="Agregado_correct" class="mb-0 mt-1" style="white-space: nowrap;display: none; border-radius: 1rem; background-color: lightgreen; margin-left: auto; align-items: baseline;">
-                              <i class="m-2 fa fa-check-circle-o" style="display: inline-block;"></i>
-                              <p class="m-2" style="display: inline-block;">Modificado correctamente</p>
-                            </div>
-
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
                           </div>
 
-                          <form method="post" action="{% url 'modificar_area_trabajo' area_trabajo.id %}">
+                          <form id="formeditarAreaTrabajo" method="post" action="{% url 'modificar_area_trabajo' area_trabajo.id %}">
                             <div class="modal-body">
                               <div class="form-group">
-                                <label for="nuevoNombreDepartamento{{ area_trabajo.id }}">Nuevo nombre del Departamento:</label>
-                                <input type="text" class="form-control" id="nuevoNombreDepartamento{{ area_trabajo.id }}" name="nuevo_nombre" value="{{ area_trabajo.nombre }}" required />
+                                <label for="nuevoNombreAreaTrabajo{{ area_trabajo.id }}">Nuevo nombre del Departamento:</label>
+                                <input type="text" class="form-control" id="nuevoNombreAreaTrabajo{{ area_trabajo.id }}" name="nuevo_nombre" value="{{ area_trabajo.nombre }}" required />
                               </div>
                             </div>
                             <div class="modal-footer justify-content-center">
@@ -174,28 +172,23 @@
   <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
 
   <!-- Modal para agregar Area de Trabajo--- -->
-
-  <div style="height: auto;" class="modal fade" id="modalArea_trabajo" aria-hidden="true" aria-labelledby="modalArea_trabajoLabel" tabindex="-1">
-    <div style="justify-content: center;" class="modal-dialog modal-dialog-centered">
-      <div style="width: 45%;" class="modal-content">
-        <div style="height: 4rem;" class="modal-header">
+   --> -->
+  <div class="modal fade" id="modalArea_trabajo" aria-hidden="true" aria-labelledby="modalArea_trabajoLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
           <h5 class="modal-title" id="modalArea_trabajo">Agregar Area de Trabajo</h5>
-
-          <div id="Agregado_correctA_t" class="mb-0 mt-1" style="white-space: nowrap;display: none; border-radius: 1rem; background-color:lightgreen; margin-left:auto;align-items: baseline;">
-            <i style="display: inline-block;" class="m-2 fa fa-check-circle-o"></i>
-            <p style="display: inline-block;" class="m-2">Agregado correctamente</p>
-          </div>
 
           <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
         </div>
         <form id="formArea_trabajo" method="POST" action="{% url 'agregar_area_trabajo' %}">
           <div class="modal-body">
-            <div style="align-items: self-end;" class="d-flex form-group">
-              <label class="m-0 fs-5" style="width: 70%;" for="nombre">Nombre del Area de Trabajo:</label>
-              <input style="width: 60%;" type="text" class="form-control" id="nombre" name="nombre" required />
+            <div class="d-flex form-group">
+              <label class="m-0 fs-5" for="nombre">Nombre del Area de Trabajo:</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required />
             </div>
           </div>
-          <div style="text-align-last: center;" class="modal-footer">
+          <div class="modal-footer">
             <button type="submit" class="btn btn-primary mr-3" name="guardarArea_trabajoBtn">Agregar</button>
             <button type="button" class="btn btn-primary ml-3" data-dismiss="modal" aria-label="Cerrar">Cerrar</button>
           </div>
@@ -210,6 +203,21 @@
       text-align-last: center;
     }
   </style>
+  <script>
+    $(document).ready(function () {
+      var message = "{{ mensaje|default:'' }}" // Asegúrate de que sea una cadena vacía si no hay mensaje
+      console.log('Mensaje:', message) // Verifica el valor del mensaje
+      if (message) {
+        document.getElementById('toast').style.display = 'block' // Muestra el toast
+        setTimeout(function () {
+          document.getElementById('toast').style.display = 'none' // Oculta el toast después de 5 segundos
+        }, 5000)
+      } else {
+        document.getElementById('toast').style.display = 'none' // Asegúrate de que esté oculto si no hay mensaje
+      }
+    })
+  </script>
+
   <!-- Core plugin JavaScript -->
   {% comment %} <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="{% static 'dist/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
